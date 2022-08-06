@@ -14,9 +14,6 @@ public class Servico extends Produto {
 
     @Override
     public String toString() {
-        return "Servico{" +
-                super.toString() + '\'' +
-                "garantia='" + garantia + '\'' +
-                '}';
+        return super.toString() + ";" + garantia;
     }
 }

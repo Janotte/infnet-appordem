@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Ordem {
 
-    private Long id;
+    private Long codigo;
     private LocalDateTime dataAbertura;
     private Situacao situacao;
     private TipoAtendimento tipoAtendimento;
@@ -13,15 +13,15 @@ public class Ordem {
     private String solucao;
     private String observacao;
 
-    public Long getId() {
-        return id;
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
     }
 
-    public LocalDateTime getDataAbertura() {
+    public LocalDateTime getDataAbertura(LocalDateTime now) {
         return dataAbertura;
     }
 
@@ -79,15 +79,6 @@ public class Ordem {
 
     @Override
     public String toString() {
-        return "Ordem{" +
-                "id=" + id +
-                ", dataAbertura=" + dataAbertura +
-                ", situacao=" + situacao +
-                ", tipoAtendimento=" + tipoAtendimento +
-                ", equipamento='" + equipamento + '\'' +
-                ", problema='" + problema + '\'' +
-                ", solucao='" + solucao + '\'' +
-                ", observacao='" + observacao + '\'' +
-                '}';
+        return codigo + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao;
     }
 }

@@ -32,10 +32,6 @@ public abstract class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" +
-                "codigo=" + codigo +
-                ", nome='" + nome + '\'' +
-                ", valor=" + valor + '\'' +
-                '}';
+        return codigo + ";" + nome + ";" + valor;
     }
 }

@@ -14,9 +14,6 @@ public class Componente extends Produto {
 
     @Override
     public String toString() {
-        return "Componente{" +
-                super.toString() + '\'' +
-                "ncm='" + ncm + '\'' +
-                '}';
+        return super.toString() + ";" + ncm;
     }
 }

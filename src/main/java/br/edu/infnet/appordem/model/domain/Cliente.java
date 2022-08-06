@@ -1,22 +1,55 @@
 package br.edu.infnet.appordem.model.domain;
 
-public class Cliente extends Pessoa {
+public class Cliente {
 
-    private TipoCliente tipoCliente;
+    private Long codigo;
+    private String nome;
+    private String cpfCnpj;
+    private String celular;
+    private String email;
 
-    public TipoCliente getTipoCliente() {
-        return tipoCliente;
+    public Long getCodigo() {
+        return codigo;
     }
 
-    public void setTipoCliente(TipoCliente tipoCliente) {
-        this.tipoCliente = tipoCliente;
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" +
-                super.toString() +
-                "tipoCliente=" + tipoCliente +
-                '}';
+        return codigo + ";" + nome + ";" + cpfCnpj + ";" + celular + ";" + email;
     }
 }

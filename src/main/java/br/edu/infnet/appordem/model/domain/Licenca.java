@@ -14,9 +14,6 @@ public class Licenca extends Produto {
 
     @Override
     public String toString() {
-        return "Licenca{" +
-                super.toString() + '\'' +
-                "validade='" + validade + '\'' +
-                '}';
+        return super.toString() + ";" + validade;
     }
 }
