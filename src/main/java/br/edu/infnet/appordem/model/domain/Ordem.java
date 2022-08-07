@@ -21,7 +21,7 @@ public class Ordem {
         this.codigo = codigo;
     }
 
-    public LocalDateTime getDataAbertura(LocalDateTime now) {
+    public LocalDateTime getDataAbertura() {
         return dataAbertura;
     }
 

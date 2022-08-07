@@ -4,11 +4,8 @@ public class Servico extends Produto {
 
     private String garantia;
 
-    public String getGarantia() {
-        return garantia;
-    }
-
-    public void setGarantia(String garantia) {
+    public Servico(Long codigo, String nome, Double valor, String garantia) {
+        super(codigo, nome, valor);
         this.garantia = garantia;
     }
 

@@ -30,15 +30,15 @@ public class OrdemTeste implements ApplicationRunner {
         ordem1.setObservacao("Com carregador e mochila");
         System.out.println(ordem1);
 
-        Ordem ordem6 = new Ordem();
-        ordem6.setCodigo(2L);
-        ordem6.setDataAbertura(LocalDateTime.of(2022, Month.AUGUST, 4, 7, 57, 35, 640000));
-        ordem6.setSituacao(Situacao.ANALISE);
-        ordem6.setTipoAtendimento(TipoAtendimento.EXTERNO);
-        ordem6.setEquipamento("Servidor Dell Power Edge 9000");
-        ordem6.setProblema("Não carrega o Windows");
-        ordem6.setObservacao("Urgente, empresa sem acesso ao domínio local");
-        System.out.println(ordem6);
+        Ordem ordem2 = new Ordem();
+        ordem2.setCodigo(2L);
+        ordem2.setDataAbertura(LocalDateTime.of(2022, Month.AUGUST, 4, 7, 57, 35, 640000));
+        ordem2.setSituacao(Situacao.ANALISE);
+        ordem2.setTipoAtendimento(TipoAtendimento.EXTERNO);
+        ordem2.setEquipamento("Servidor Dell Power Edge 9000");
+        ordem2.setProblema("Não carrega o Windows");
+        ordem2.setObservacao("Urgente, empresa sem acesso ao domínio local");
+        System.out.println(ordem2);
 
         Ordem ordem3 = new Ordem();
         ordem3.setCodigo(3L);

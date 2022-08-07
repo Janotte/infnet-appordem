@@ -14,25 +14,13 @@ public class LicencaTeste implements ApplicationRunner {
 
         System.out.println("\n# Licença:");
 
-        Licenca licenca1 = new Licenca();
-        licenca1.setCodigo(1L);
-        licenca1.setValidade("12 meses");
-        licenca1.setNome("Licença 1");
-        licenca1.setValor(76.91);
+        Licenca licenca1 = new Licenca(1L,"Licença 1",76.91,"12 meses");
         System.out.println(licenca1);
 
-        Licenca licenca2 = new Licenca();
-        licenca2.setCodigo(2L);
-        licenca2.setValidade("24 meses");
-        licenca2.setNome("Licença 2");
-        licenca2.setValor(147.42);
+        Licenca licenca2 = new Licenca(2L,"Licença 2",147.42,"24 meses");
         System.out.println(licenca2);
 
-        Licenca licenca3 = new Licenca();
-        licenca3.setCodigo(3L);
-        licenca3.setValidade("36 meses");
-        licenca3.setNome("Licença 3");
-        licenca3.setValor(324.76);
+        Licenca licenca3 = new Licenca(3L,"Licença 3",324.76,"36 meses");
         System.out.println(licenca3);
     }
 }

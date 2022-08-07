@@ -4,11 +4,8 @@ public class Componente extends Produto {
 
     private String ncm;
 
-    public String getNcm() {
-        return ncm;
-    }
-
-    public void setNcm(String ncm) {
+    public Componente(Long codigo, String nome, Double valor, String ncm) {
+        super(codigo, nome, valor);
         this.ncm = ncm;
     }
 

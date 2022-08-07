@@ -4,11 +4,8 @@ public class Licenca extends Produto {
 
     private String validade;
 
-    public String getValidade() {
-        return validade;
-    }
-
-    public void setValidade(String validade) {
+    public Licenca(Long codigo, String nome, Double valor, String validade) {
+        super(codigo, nome, valor);
         this.validade = validade;
     }
 

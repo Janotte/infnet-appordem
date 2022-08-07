@@ -15,25 +15,13 @@ public class ServicoTeste implements ApplicationRunner {
 
         System.out.println("\n# Serviço:");
 
-        Servico servico1 = new Servico();
-        servico1.setCodigo(1L);
-        servico1.setNome("Serviço 1");
-        servico1.setValor(120.00);
-        servico1.setGarantia("90 dias");
+        Servico servico1 = new Servico(1L,"Serviço 1",120.00,"90 dias");
         System.out.println(servico1);
 
-        Servico servico2 = new Servico();
-        servico2.setCodigo(2L);
-        servico2.setNome("Serviço 2");
-        servico2.setValor(1500.00);
-        servico2.setGarantia("180 dias");
+        Servico servico2 = new Servico(2L,"Serviço 2",1500.00,"180 dias");
         System.out.println(servico2);
 
-        Servico servico3 = new Servico();
-        servico3.setCodigo(3L);
-        servico3.setNome("Serviço 3");
-        servico3.setValor(2500.00);
-        servico3.setGarantia("360 dias");
+        Servico servico3 = new Servico(3L,"Serviço 3",2500.00,"360 dias");
         System.out.println(servico3);
     }
 }

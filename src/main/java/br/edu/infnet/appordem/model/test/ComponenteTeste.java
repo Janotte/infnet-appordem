@@ -14,25 +14,13 @@ public class ComponenteTeste implements ApplicationRunner {
 
         System.out.println("\n# Componente:");
 
-        Componente componente1 = new Componente();
-        componente1.setCodigo(1L);
-        componente1.setNcm("1111.11.11");
-        componente1.setNome("Componente 1");
-        componente1.setValor(100.00);
+        Componente componente1 = new Componente(1L,"Componente 1",100.00,"1111.11.11");
         System.out.println(componente1);
 
-        Componente componente2 = new Componente();
-        componente2.setCodigo(2L);
-        componente2.setNcm("2222.22.22");
-        componente2.setNome("Componente 2");
-        componente2.setValor(200.00);
+        Componente componente2 = new Componente(2L,"Componente 2",200.00,"2222.22.22");
         System.out.println(componente2);
 
-        Componente componente3 = new Componente();
-        componente3.setCodigo(3L);
-        componente3.setNcm("3333.33.33");
-        componente3.setNome("Componente 3");
-        componente3.setValor(300.00);
+        Componente componente3 = new Componente(3L,"Componente 3",300.00,"3333.33.33");
         System.out.println(componente3);
     }
 }

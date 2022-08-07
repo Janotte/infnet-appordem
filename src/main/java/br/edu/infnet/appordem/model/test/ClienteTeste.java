@@ -15,28 +15,13 @@ public class ClienteTeste implements ApplicationRunner {
 
         System.out.println("\n# Cliente");
 
-        Cliente cliente1 = new Cliente();
-        cliente1.setCodigo(1L);
-        cliente1.setNome("Cliente 1");
-        cliente1.setCpfCnpj("111.111.111-11");
-        cliente1.setCelular("11111-1111");
-        cliente1.setEmail("cliente1@exemplo.com");
+        Cliente cliente1 = new Cliente(1L,"Cliente 1","111.111.111-11","11111-1111","cliente1@exemplo.com");
         System.out.println(cliente1);
 
-        Cliente cliente2 = new Cliente();
-        cliente2.setCodigo(2L);
-        cliente2.setNome("Cliente 2");
-        cliente2.setCpfCnpj("222.222.222-22");
-        cliente2.setCelular("22222-2222");
-        cliente2.setEmail("cliente2@exemplo.com");
+        Cliente cliente2 = new Cliente(2L,"Cliente 2","222.222.222-22","22222-2222","cliente2@exemplo.com");
         System.out.println(cliente2);
 
-        Cliente cliente3 = new Cliente();
-        cliente3.setCodigo(3L);
-        cliente3.setNome("Cliente 3");
-        cliente3.setCpfCnpj("333.333.333-33");
-        cliente3.setCelular("33333-3333");
-        cliente3.setEmail("cliente3@exemplo.com");
+        Cliente cliente3 = new Cliente(3L,"Cliente 3","333.333.333-33","33333-3333","cliente3@exemplo.com");
         System.out.println(cliente3);
     }
 }

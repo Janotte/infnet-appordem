@@ -8,43 +8,11 @@ public class Cliente {
     private String celular;
     private String email;
 
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
+    public Cliente(Long codigo, String nome, String cpfCnpj, String celular, String email) {
         this.codigo = codigo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpfCnpj() {
-        return cpfCnpj;
-    }
-
-    public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
         this.celular = celular;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
     }
 
