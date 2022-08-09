@@ -10,6 +10,12 @@ public class Licenca extends Produto {
     }
 
     @Override
+    public void impressao() {
+        System.out.println("# Licença");
+        System.out.println(this);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ";" + validade;
     }

@@ -10,6 +10,12 @@ public class Servico extends Produto {
     }
 
     @Override
+    public void impressao() {
+        System.out.println("# Serviço");
+        System.out.println(this);
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ";" + garantia;
     }

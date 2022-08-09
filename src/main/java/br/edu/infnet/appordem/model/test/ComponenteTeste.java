@@ -12,15 +12,15 @@ public class ComponenteTeste implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        System.out.println("\n# Componente:");
+        System.out.println("\n# Componentes:");
 
         Componente componente1 = new Componente(1L,"Componente 1",100.00,"1111.11.11");
-        System.out.println(componente1);
+        componente1.impressao();
 
         Componente componente2 = new Componente(2L,"Componente 2",200.00,"2222.22.22");
-        System.out.println(componente2);
+        componente2.impressao();
 
         Componente componente3 = new Componente(3L,"Componente 3",300.00,"3333.33.33");
-        System.out.println(componente3);
+        componente3.impressao();
     }
 }

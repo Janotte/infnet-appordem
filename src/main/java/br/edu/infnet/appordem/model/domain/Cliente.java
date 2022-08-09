@@ -16,6 +16,11 @@ public class Cliente {
         this.email = email;
     }
 
+    public void impressao() {
+        System.out.println("# Cliente");
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
         return codigo + ";" + nome + ";" + cpfCnpj + ";" + celular + ";" + email;

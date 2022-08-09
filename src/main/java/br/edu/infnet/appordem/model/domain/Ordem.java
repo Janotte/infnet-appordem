@@ -77,6 +77,11 @@ public class Ordem {
         this.observacao = observacao;
     }
 
+    public void impressao() {
+        System.out.println("# Ordem");
+        System.out.println(this);
+    }
+
     @Override
     public String toString() {
         return codigo + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao;
