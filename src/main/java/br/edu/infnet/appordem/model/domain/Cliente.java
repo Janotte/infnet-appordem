@@ -1,6 +1,8 @@
 package br.edu.infnet.appordem.model.domain;
 
-public class Cliente {
+import br.edu.infnet.appordem.interfaces.IPrinter;
+
+public class Cliente implements IPrinter {
 
     private Long codigo;
     private String nome;
@@ -16,8 +18,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public void impressao() {
-        System.out.println("# Cliente");
+    public String getNome() {
+        return nome;
+    }
+
+    @Override
+    public void imprimir() {
         System.out.println(this);
     }
 

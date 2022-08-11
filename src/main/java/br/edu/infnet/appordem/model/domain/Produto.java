@@ -1,26 +1,55 @@
 package br.edu.infnet.appordem.model.domain;
 
-public abstract class Produto {
+import br.edu.infnet.appordem.interfaces.IPrinter;
+
+public abstract class Produto implements IPrinter {
 
     private Long codigo;
     private String nome;
-    private Double valor;
-    private Double custo;
+    private Double custoCompra;
+    private Double precoVenda;
 
-    public Produto(Long codigo, String nome, Double valor) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.valor = valor;
+    public abstract double calcularPrecoVenda();
+
+    public void imprimir() {
+        System.out.println(this);
     }
-
-    public double calcularValor() {
-        return valor / .7;
-    }
-
-    public abstract void impressao();
 
     @Override
     public String toString() {
-        return codigo + ";" + nome + ";" + valor + ";" + calcularValor();
+        return codigo + ";" + nome + ";" + custoCompra + ";" + precoVenda;
+    }
+
+
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getCustoCompra() {
+        return custoCompra;
+    }
+
+    public void setCustoCompra(Double custoCompra) {
+        this.custoCompra = custoCompra;
+    }
+
+    public Double getPrecoVenda() {
+        return precoVenda;
+    }
+
+    public void setPrecoVenda(Double precoVenda) {
+        this.precoVenda = precoVenda;
     }
 }

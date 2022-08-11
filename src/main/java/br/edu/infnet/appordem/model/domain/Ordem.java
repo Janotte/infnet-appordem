@@ -1,8 +1,10 @@
 package br.edu.infnet.appordem.model.domain;
 
+import br.edu.infnet.appordem.interfaces.IPrinter;
+
 import java.time.LocalDateTime;
 
-public class Ordem {
+public class Ordem implements IPrinter {
 
     private Long codigo;
     private LocalDateTime dataAbertura;
@@ -77,8 +79,8 @@ public class Ordem {
         this.observacao = observacao;
     }
 
-    public void impressao() {
-        System.out.println("# Ordem");
+    @Override
+    public void imprimir() {
         System.out.println(this);
     }
 

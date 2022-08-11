@@ -17,7 +17,7 @@ public class OrdemTeste implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        System.out.println("\n# Ordens:");
+        System.out.println("\n### Ordens:");
 
         Ordem ordem1 = new Ordem();
         ordem1.setCodigo(1L);
@@ -28,7 +28,7 @@ public class OrdemTeste implements ApplicationRunner {
         ordem1.setProblema("Adicionar SSD NVME de 480Gb e reinstalar");
         ordem1.setSolucao("Backup, instalação do SSD e reinstalação do Windows");
         ordem1.setObservacao("Com carregador e mochila");
-        ordem1.impressao();
+        AppImpressao.relatorio("Incluído a ordem de código: " + ordem1.getCodigo(), ordem1);
 
         Ordem ordem2 = new Ordem();
         ordem2.setCodigo(2L);
@@ -38,7 +38,7 @@ public class OrdemTeste implements ApplicationRunner {
         ordem2.setEquipamento("Servidor Dell Power Edge 9000");
         ordem2.setProblema("Não carrega o Windows");
         ordem2.setObservacao("Urgente, empresa sem acesso ao domínio local");
-        ordem2.impressao();
+        AppImpressao.relatorio("Incluído a ordem de código: " + ordem2.getCodigo(), ordem2);
 
         Ordem ordem3 = new Ordem();
         ordem3.setCodigo(3L);
@@ -48,6 +48,6 @@ public class OrdemTeste implements ApplicationRunner {
         ordem3.setEquipamento("CPU Dell Vostro");
         ordem3.setProblema("Não acesso a conectividade social");
         ordem3.setObservacao("Tem urgência");
-        ordem3.impressao();
+        AppImpressao.relatorio("Incluído a ordem de código: " + ordem3.getCodigo(), ordem3);
     }
 }
