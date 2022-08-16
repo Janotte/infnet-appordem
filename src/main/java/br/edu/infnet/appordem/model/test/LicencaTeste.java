@@ -1,6 +1,7 @@
 package br.edu.infnet.appordem.model.test;
 
 import br.edu.infnet.appordem.model.domain.Licenca;
+import br.edu.infnet.appordem.service.AppImpressao;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;

@@ -3,6 +3,7 @@ package br.edu.infnet.appordem.model.domain;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public class Ordem implements IPrinter {
 
@@ -10,10 +11,17 @@ public class Ordem implements IPrinter {
     private LocalDateTime dataAbertura;
     private Situacao situacao;
     private TipoAtendimento tipoAtendimento;
+    private Cliente cliente;
     private String equipamento;
     private String problema;
     private String solucao;
+    private Set<Produto> produtos;
     private String observacao;
+
+    public Ordem(Cliente cliente) {
+        this.dataAbertura = LocalDateTime.now();
+        this.cliente = cliente;
+    }
 
     public Long getCodigo() {
         return codigo;
@@ -21,14 +29,6 @@ public class Ordem implements IPrinter {
 
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
-    }
-
-    public LocalDateTime getDataAbertura() {
-        return dataAbertura;
-    }
-
-    public void setDataAbertura(LocalDateTime dataAbertura) {
-        this.dataAbertura = dataAbertura;
     }
 
     public Situacao getSituacao() {
@@ -71,6 +71,14 @@ public class Ordem implements IPrinter {
         this.solucao = solucao;
     }
 
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
     public String getObservacao() {
         return observacao;
     }
@@ -86,6 +94,6 @@ public class Ordem implements IPrinter {
 
     @Override
     public String toString() {
-        return codigo + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao;
+        return codigo + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao + ";" + cliente + ";" + produtos.size();
     }
 }

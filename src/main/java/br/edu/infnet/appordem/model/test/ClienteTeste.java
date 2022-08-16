@@ -1,6 +1,7 @@
 package br.edu.infnet.appordem.model.test;
 
 import br.edu.infnet.appordem.model.domain.Cliente;
+import br.edu.infnet.appordem.service.AppImpressao;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -21,7 +22,7 @@ public class ClienteTeste implements ApplicationRunner {
         Cliente cliente2 = new Cliente(2L,"Cliente 2","222.222.222-22","22222-2222","cliente2@exemplo.com");
         AppImpressao.relatorio("Incluído o componente: " + cliente2.getNome(), cliente2);
 
-        Cliente cliente3 = new Cliente(3L,"Cliente 3","333.333.333-33","33333-3333","cliente3@exemplo.com");
+        Cliente cliente3 = new Cliente(3L, "Cliente 3", "333.333.333-33", "33333-3333", "cliente3@exemplo.com");
         AppImpressao.relatorio("Incluído o componente: " + cliente3.getNome(), cliente3);
     }
 }

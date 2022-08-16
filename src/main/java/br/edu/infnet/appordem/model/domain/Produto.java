@@ -2,6 +2,8 @@ package br.edu.infnet.appordem.model.domain;
 
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
+import java.util.Objects;
+
 public abstract class Produto implements IPrinter {
 
     private Long codigo;
@@ -51,5 +53,18 @@ public abstract class Produto implements IPrinter {
 
     public void setPrecoVenda(Double precoVenda) {
         this.precoVenda = precoVenda;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+    //    if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Objects.equals(codigo, produto.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo);
     }
 }

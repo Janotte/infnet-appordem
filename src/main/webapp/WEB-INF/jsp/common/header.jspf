@@ -12,7 +12,7 @@
     <title>APP Ordem</title>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="maincontainer">
         <header>
             <%@ include file="../common/navigation.jspf"%>
         </header>

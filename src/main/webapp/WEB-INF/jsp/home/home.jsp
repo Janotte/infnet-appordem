@@ -3,7 +3,7 @@
 
 <h1 class="ms-3">Descrição da classes do projeto</h1>
 <p class="ms-3">Projeto do Aplicativo de Gestão de Ordem de Serviço</p>
-<table class="table table-striped">
+<table class="table table-striped mb-4">
     <h4>Classe - Ordem</h4>
         <thead class="table-info">
             <tr>
@@ -55,7 +55,7 @@
         </tr>
     </tbody>
 </table>
-<table class="table table-striped">
+<table class="table table-striped mb-4">
     <h4>Classe - Cliente</h4>
         <thead class="table-info">
             <tr>
@@ -92,7 +92,7 @@
         </tr>
     </tbody>
 </table>
-<table class="table table-striped">
+<table class="table table-striped mb-4">
     <h4>Classe - Componente</h4>
         <thead class="table-info">
             <tr>
@@ -107,30 +107,41 @@
             <td>Long</td>
             <td colspan="2">Código do componente</td>
         </tr>
+         <tr>
+            <td>nome</td>
+            <td>String</td>
+            <td colspan="2">Nome do componente</td>
+        </tr>
+        <tr>
+            <td>custoCompra</td>
+            <td>Double</td>
+            <td colspan="2">Custo de compra do componente</td>
+        </tr>
+        <tr>
+            <td>precoVenda</td>
+            <td>Double</td>
+            <td colspan="2">Preço de venda do componente</td>
+        </tr>
         <tr>
             <td>ncm</td>
             <td>String</td>
             <td colspan="2">NCM do componente</td>
         </tr>
-        <tr>
-            <td>nome</td>
-            <td>String</td>
-            <td colspan="2">Nome do componente</td>
-        </tr>
+
          <tr>
-            <td>custo</td>
+            <td>valorCompra</td>
             <td>Double</td>
-            <td colspan="2">Custo do componente</td>
+            <td colspan="2">Valor de compra do componente</td>
         </tr>
         <tr>
-            <td>valor</td>
+            <td>valorFrete</td>
             <td>Double</td>
-            <td colspan="2">Valor do componente</td>
+            <td colspan="2">Valor do frete do componente</td>
         </tr>
 
     </tbody>
 </table>
-<table class="table table-striped">
+<table class="table table-striped mb-4">
     <h4>Classe - Licenca</h4>
         <thead class="table-info">
             <tr>
@@ -143,31 +154,41 @@
         <tr>
             <td>codigo</td>
             <td>Long</td>
-            <td colspan="2">Código da licença</td>
-        </tr>
-        <tr>
-            <td>nome</td>
-            <td>String</td>
-            <td colspan="2">Nome da licença</td>
+            <td colspan="2">Código do componente</td>
         </tr>
          <tr>
-            <td>custo</td>
-            <td>Double</td>
-            <td colspan="2">Custo da licença</td>
+            <td>nome</td>
+            <td>String</td>
+            <td colspan="2">Nome do componente</td>
         </tr>
         <tr>
-            <td>valor</td>
+            <td>custoCompra</td>
             <td>Double</td>
-            <td colspan="2">Valor da licença</td>
+            <td colspan="2">Custo de compra do componente</td>
+        </tr>
+        <tr>
+            <td>precoVenda</td>
+            <td>Double</td>
+            <td colspan="2">Preço de venda do componente</td>
+        </tr>
+        <tr>
+            <td>quantidadeDispositivos</td>
+            <td>Integer</td>
+            <td colspan="2">Quantidade de dispositivos da licença</td>
         </tr>
         <tr>
             <td>validade</td>
             <td>String</td>
             <td colspan="2">Validade da licença</td>
         </tr>
+        <tr>
+            <td>fabricante</td>
+            <td>String</td>
+            <td colspan="2">Fabricante da licença</td>
+        </tr>
     </tbody>
 </table>
-<table class="table table-striped">
+<table class="table table-striped mb-4">
     <h4>Classe - Servico</h4>
         <thead class="table-info">
             <tr>
@@ -180,27 +201,37 @@
         <tr>
             <td>codigo</td>
             <td>Long</td>
-            <td colspan="2">Código do serviço</td>
-        </tr>
-        <tr>
-            <td>nome</td>
-            <td>String</td>
-            <td colspan="2">Nome do serviço</td>
+            <td colspan="2">Código do componente</td>
         </tr>
          <tr>
-            <td>custo</td>
-            <td>Double</td>
-            <td colspan="2">Custo do serviço</td>
+            <td>nome</td>
+            <td>String</td>
+            <td colspan="2">Nome do componente</td>
         </tr>
         <tr>
-            <td>valor</td>
+            <td>custoCompra</td>
             <td>Double</td>
-            <td colspan="2">Valor do serviço</td>
+            <td colspan="2">Custo de compra do componente</td>
+        </tr>
+        <tr>
+            <td>precoVenda</td>
+            <td>Double</td>
+            <td colspan="2">Preço de venda do componente</td>
         </tr>
         <tr>
             <td>garantia</td>
             <td>String</td>
             <td colspan="2">Garantia do serviço</td>
+        </tr>
+         <tr>
+            <td>tipoServico</td>
+            <td>TipoServico</td>
+            <td colspan="2">Tipo do serviço</td>
+        </tr>
+         <tr>
+            <td>classificacaoFiscal</td>
+            <td>String</td>
+            <td colspan="2">Classificação fiscal do serviço</td>
         </tr>
     </tbody>
 </table>

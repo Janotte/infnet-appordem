@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.model.test;
+package br.edu.infnet.appordem.service;
 
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
