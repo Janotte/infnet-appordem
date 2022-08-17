@@ -1,3 +1,24 @@
-body .container-fluid main {
-    padding: 60px 10px;
+body {
+    background-color: #f8f8f8;
+}
+
+body main {
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: .5px 10px 15px rgba(0, 0, 0, .2);
+    margin: 65px 0px;
+    padding: 25px;
+}
+
+body .btn {
+    margin: 5px;
+}
+
+main #top {
+
+}
+
+#top h2 {
+    font-weight: 900;
+    margin-bottom: 30px;
 }
