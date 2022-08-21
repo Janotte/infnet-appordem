@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public abstract class Produto implements IPrinter {
 
-    private Long codigo;
+    private Long id;
     private String nome;
     private Double custoCompra;
     private Double precoVenda;
@@ -19,16 +19,16 @@ public abstract class Produto implements IPrinter {
 
     @Override
     public String toString() {
-        return codigo + ";" + nome + ";" + custoCompra + ";" + precoVenda;
+        return id + ";" + nome + ";" + custoCompra + ";" + precoVenda;
     }
 
 
-    public Long getCodigo() {
-        return codigo;
+    public Long getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -60,11 +60,11 @@ public abstract class Produto implements IPrinter {
         if (this == o) return true;
     //    if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return Objects.equals(codigo, produto.codigo);
+        return Objects.equals(id, produto.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo);
+        return Objects.hash(id);
     }
 }

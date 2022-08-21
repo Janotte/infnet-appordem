@@ -4,7 +4,7 @@ public enum TipoAtendimento {
 
     INTERNO("Interno"),
     REMOTO("Remoto"),
-    EXTERNO("Externo");
+    EXTERNO("Remoto");
 
     private final String descricao;
 

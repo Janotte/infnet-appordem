@@ -2,13 +2,13 @@ package br.edu.infnet.appordem.model.domain;
 
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 public class Ordem implements IPrinter {
 
-    private Long codigo;
-    private LocalDateTime dataAbertura;
+    private Long id;
+    private Date dataAbertura;
     private Situacao situacao;
     private TipoAtendimento tipoAtendimento;
     private Cliente cliente;
@@ -19,16 +19,28 @@ public class Ordem implements IPrinter {
     private String observacao;
 
     public Ordem(Cliente cliente) {
-        this.dataAbertura = LocalDateTime.now();
+        this.dataAbertura = new Date(System.currentTimeMillis());
         this.cliente = cliente;
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Ordem() {
+
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public void setDataAbertura(Date dataAbertura) {
+        this.dataAbertura = dataAbertura;
     }
 
     public Situacao getSituacao() {
@@ -45,6 +57,14 @@ public class Ordem implements IPrinter {
 
     public void setTipoAtendimento(TipoAtendimento tipoAtendimento) {
         this.tipoAtendimento = tipoAtendimento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getEquipamento() {
@@ -94,6 +114,6 @@ public class Ordem implements IPrinter {
 
     @Override
     public String toString() {
-        return codigo + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao + ";" + cliente + ";" + produtos.size();
+        return id + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao + ";" + cliente + ";" + produtos.size();
     }
 }
