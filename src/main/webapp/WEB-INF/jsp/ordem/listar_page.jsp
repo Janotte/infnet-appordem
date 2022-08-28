@@ -29,6 +29,7 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">Data de Abertura</th>
                         <th scope="col">Situação</th>
                         <th scope="col">Atendimento</th>
                         <th scope="col">Equipamento</th>
@@ -37,20 +38,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="item" items="${ordemList}">
+                    <c:forEach var="ordem" items="${ordemList}">
                         <tr>
-                            <td>${item.id}</td>
-                            <td>${item.situacao.descricao}</td>
-                            <td>${item.tipoAtendimento.descricao}</td>
-                            <td>${item.equipamento}</td>
-                            <td>${item.problema}</td>
+                            <td>${ordem.id}</td>
+                            <fmt:formatDate value="${ordem.dataAbertura}" pattern="dd-MM-yyyy HH:mm:ss" var="dataAbertura" />
+                            <td>${dataAbertura}</td>
+                            <td>${ordem.situacao.descricao}</td>
+                            <td>${ordem.tipoAtendimento.descricao}</td>
+                            <td>${ordem.equipamento}</td>
+                            <td>${ordem.problema}</td>
                             <td class="actions">
-                                <a class="btn btn-info btn-sm" href="/ordem/${item.id}/atualizar"
+                                <a class="btn btn-info btn-sm" href="/ordem/${ordem.id}/atualizar"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
                                     <i class="bi bi-check-circle text-light"></i>
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="#"
-                                   data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-href="/ordem/${item.id}/excluir"
+                                   data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-href="/ordem/${ordem.id}/excluir"
                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
                                    <i class="bi bi-trash text-light"></i>
                                </a>

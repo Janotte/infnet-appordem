@@ -1,0 +1,5 @@
+1;Breno Marcos Fogaça;388.628.549-94;(47) 98676-5562;brenomarcosfogaca@iglod.com;CONCLUIDA;INTERNO;Notebook Samsung Book i7;Adicionar SSD NVME de 480Gb e reinstalar;Backup, instalação do SSD e reinstalação do Windows;Com carregador e mochila;
+2;Analu Alimentos ME;33.087.802/0001-30;(21) 98167-0436;representantes@analualimentosme.com.br;ANALISE;EXTERNO;Servidor Dell Power Edge 9000;Não carrega o Windows;null;Urgente, empresa sem acesso ao domínio local;
+3;Eduarda Alícia Ferreira;855.380.389-98;(47) 99498-5679;eduarda.alicia.ferreira@inforgel.com;ABERTA;REMOTO;CPU Dell Vostro;Renovação de antivirus e pacote Office;null;Tem urgência;
+4;;855.380.389-98;(47) 99498-5679;eduarda.alicia.ferreira@inforgel.com;ABERTA;REMOTO;CPU Dell Vostro;Renovação de antivirus e pacote Office;null;Tem urgência;
+5;Cliente sem CPF;;(47) 99498-5679;eduarda.alicia.ferreira@inforgel.com;ABERTA;REMOTO;CPU Dell Vostro;Renovação de antivirus e pacote Office;null;Tem urgência;

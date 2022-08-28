@@ -1,16 +1,27 @@
 package br.edu.infnet.appordem.model.domain;
 
+import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
 public class Cliente implements IPrinter {
 
     private Long id;
-    private String nome;
     private String cpfCnpj;
+    private String nome;
     private String celular;
     private String email;
 
-    public Cliente(String nome, String cpfCnpj, String celular, String email) {
+    public Cliente(String nome, String cpfCnpj, String celular, String email) throws CampoObrigatorioException, CpfCnpjInvalidoException {
+
+        if (nome == null) throw new CampoObrigatorioException("O nome do cliente é necessário.");
+
+        if (nome.isBlank()) throw new CampoObrigatorioException("O nome do cliente é necessário.");
+
+        if (cpfCnpj == null) throw new CpfCnpjInvalidoException("Não é possível aceitar CPF nulo para cliente");
+
+        if (cpfCnpj.isBlank()) throw new CpfCnpjInvalidoException("O CPF ou CNPJ do cliente é necessário.");
+
         this.nome = nome;
         this.cpfCnpj = cpfCnpj;
         this.celular = celular;
@@ -18,7 +29,6 @@ public class Cliente implements IPrinter {
     }
 
     public Cliente() {
-
     }
 
     public Long getId() {

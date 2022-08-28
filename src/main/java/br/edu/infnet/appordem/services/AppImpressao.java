@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.service;
+package br.edu.infnet.appordem.services;
 
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
@@ -9,5 +9,4 @@ public class AppImpressao {
 
         printer.imprimir();
     }
-
 }

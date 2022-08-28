@@ -35,18 +35,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="item" items="${servicoList}">
+                    <c:forEach var="servico" items="${servicoList}">
                         <tr>
-                            <td>${item.id}</td>
-                            <td>${item.nome}</td>
-                            <td><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${item.precoVenda}" /></td>
+                            <td>${servico.id}</td>
+                            <td>${servico.nome}</td>
+                            <td><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${servico.precoVenda}" /></td>
                             <td class="actions">
-                                <a class="btn btn-info btn-sm" href="/servico/${item.id}/atualizar"
+                                <a class="btn btn-info btn-sm" href="/servico/${servico.id}/atualizar"
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
                                     <i class="bi bi-check-circle text-light"></i>
                                 </a>
                                 <a class="btn btn-danger btn-sm" href="#"
-                                   data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-href="/servico/${item.id}/excluir"
+                                   data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-href="/servico/${servico.id}/excluir"
                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
                                    <i class="bi bi-trash text-light"></i>
                                </a>

@@ -1,5 +1,7 @@
 package br.edu.infnet.appordem.model.domain;
 
+import br.edu.infnet.appordem.exceptions.ClienteNuloException;
+import br.edu.infnet.appordem.exceptions.OrdemSemProdutoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
 import java.util.Date;
@@ -18,13 +20,18 @@ public class Ordem implements IPrinter {
     private Set<Produto> produtos;
     private String observacao;
 
-    public Ordem(Cliente cliente) {
+    public Ordem(Cliente cliente, Set<Produto> produtos) throws ClienteNuloException, OrdemSemProdutoException {
+
+        if (cliente == null) throw new ClienteNuloException("Impossível criar uma Ordem sem um cliente!");
+
+        if (produtos.size() < 1) throw new OrdemSemProdutoException("Impossível criar uma Ordem sem Produtos!");
+
         this.dataAbertura = new Date(System.currentTimeMillis());
         this.cliente = cliente;
+        this.produtos = produtos;
     }
 
     public Ordem() {
-
     }
 
     public Long getId() {
@@ -114,6 +121,6 @@ public class Ordem implements IPrinter {
 
     @Override
     public String toString() {
-        return id + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao + ";" + cliente + ";" + produtos.size();
+        return id + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao + ";" + cliente;
     }
 }

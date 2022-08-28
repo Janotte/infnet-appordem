@@ -1,0 +1,8 @@
+Antivírus Internet Security;76.91;1;12 meses;ESET Brasil;
+Antivírus Internet Security;147.42;2;24 meses;ESET Brasil;
+Antivírus Internet Security;324.76;5;36 meses;ESET Brasil;
+Antivírus Business Security;1090.00;10;12 meses;Bitdefender;
+Antivírus Business Security;4000.00;50;24 meses;Bitdefender;
+Antivírus Business Security;10000.00;100;36 meses;Bitdefender;
+Licença com custo de compra negativo;-1;100;36 meses;Bitdefender;
+Licença com valor de venda abaixo do permitido;0.50;-100;36 meses;Bitdefender;

@@ -1,0 +1,9 @@
+SSD NVME 480Gb Corsair;1111.11.11;100.00;10.00;
+Fonte 600W Dell PE;2222.22.22;700.00;67.00;
+Memória DDR4 8Gb 3200MHz;3333.33.33;310.00;20.00;
+HD SAS 15K 4Tb Seagate;4444.44.44;4500;180.00;
+Kit Teclado e Mouse USB Logitech;5555.55.55;120.00;13.57;
+Componente com valor de frete negativo;6666.66.66;100.00;-1.00;
+Componente com valor de compra negativo;6666.66.66;-100.00;10.00;
+Componente com valor de venda menor que o permitido;6666.66.66;0.10;0.05;
+Componente com NCM inválido;5555.55.5;120.00;13.57;

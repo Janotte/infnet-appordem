@@ -1,7 +1,8 @@
-package br.edu.infnet.appordem.controller;
+package br.edu.infnet.appordem.controllers;
 
+import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.model.domain.Cliente;
-import br.edu.infnet.appordem.service.AppImpressao;
+import br.edu.infnet.appordem.services.AppImpressao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,7 +60,11 @@ public class ClienteController {
 
     @PostMapping("/cliente/adicionar")
     public String create(@ModelAttribute("cliente") Cliente cliente) {
-        incluir(cliente);
+        try {
+            incluir(cliente);
+        } catch (CpfCnpjInvalidoException e) {
+            throw new CpfCnpjInvalidoException("");
+        }
         return "redirect:/clientes";
     }
 

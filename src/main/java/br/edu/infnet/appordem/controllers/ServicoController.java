@@ -1,8 +1,7 @@
-package br.edu.infnet.appordem.controller;
+package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Servico;
-import br.edu.infnet.appordem.model.domain.Servico;
-import br.edu.infnet.appordem.service.AppImpressao;
+import br.edu.infnet.appordem.services.AppImpressao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +40,7 @@ public class ServicoController {
 
     public static void atualizar(Long id, Servico servico) {
         servicoMap.put(id, servico);
-        AppImpressao.relatorio("Atualizado o servico: " + servico.getNome(), servico);
+        AppImpressao.relatorio("Atualizado o serviço: " + servico.getNome(), servico);
     }
 
     @GetMapping("/servicos")

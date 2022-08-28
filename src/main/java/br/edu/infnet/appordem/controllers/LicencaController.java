@@ -1,7 +1,7 @@
-package br.edu.infnet.appordem.controller;
+package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Licenca;
-import br.edu.infnet.appordem.service.AppImpressao;
+import br.edu.infnet.appordem.services.AppImpressao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,7 @@ public class LicencaController {
     public static void incluir(Licenca licenca) {
         licenca.setId(id++);
         licencaMap.put(licenca.getId(), licenca);
-        AppImpressao.relatorio("Incluído o licenca: " + licenca.getNome(), licenca);
+        AppImpressao.relatorio("Incluído a licença: " + licenca.getNome(), licenca);
     }
 
     public static Collection<Licenca> obterLista() {
@@ -40,7 +40,7 @@ public class LicencaController {
 
     public static void atualizar(Long id, Licenca licenca) {
         licencaMap.put(id, licenca);
-        AppImpressao.relatorio("Atualizado o licença: " + licenca.getNome(), licenca);
+        AppImpressao.relatorio("Atualizado a licença: " + licenca.getNome(), licenca);
     }
 
     @GetMapping("/licencas")

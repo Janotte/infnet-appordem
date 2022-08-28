@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.controller;
+package br.edu.infnet.appordem.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,5 +1,9 @@
 package br.edu.infnet.appordem.model.domain;
 
+import br.edu.infnet.appordem.exceptions.LicencaSemFabricanteException;
+import br.edu.infnet.appordem.exceptions.ValorNegativoException;
+import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
+
 public class Licenca extends Produto {
 
     private int quantidadeDispositivos;
@@ -26,13 +30,29 @@ public class Licenca extends Produto {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    public void setFabricante(String fabricante) throws LicencaSemFabricanteException {
+
+        if (fabricante == null)
+            throw new LicencaSemFabricanteException("O campo fabricante não deve ser nulo!");
+
+        if (fabricante.isEmpty())
+            throw new LicencaSemFabricanteException("O campo fabricante deve ser preenchido!");
+
         this.fabricante = fabricante;
     }
 
     @Override
-    public double calcularPrecoVenda() {
-        return getCustoCompra() * 2;
+    public double calcularPrecoVenda() throws ValorVendaInvalidoException {
+
+        if (getCustoCompra() < 0)
+            throw new ValorNegativoException("O custo de compra da licença não pode ser negativo.");
+
+        Double valor = getCustoCompra() * 2;
+
+        if (valor < 2)
+            throw new ValorVendaInvalidoException("O valor de venda da licença não pode ser menor que 2.00.");
+
+        return valor;
     }
 
     @Override

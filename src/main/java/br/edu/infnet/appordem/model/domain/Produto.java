@@ -1,5 +1,6 @@
 package br.edu.infnet.appordem.model.domain;
 
+import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
 import java.util.Objects;
@@ -11,7 +12,7 @@ public abstract class Produto implements IPrinter {
     private Double custoCompra;
     private Double precoVenda;
 
-    public abstract double calcularPrecoVenda();
+    public abstract double calcularPrecoVenda() throws ValorVendaInvalidoException;
 
     public void imprimir() {
         System.out.println(this);
@@ -19,9 +20,8 @@ public abstract class Produto implements IPrinter {
 
     @Override
     public String toString() {
-        return id + ";" + nome + ";" + custoCompra + ";" + precoVenda;
+        return id + ";" + nome + ";" + custoCompra;
     }
-
 
     public Long getId() {
         return id;
@@ -35,9 +35,7 @@ public abstract class Produto implements IPrinter {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) { this.nome = nome; }
 
     public Double getCustoCompra() {
         return custoCompra;
@@ -58,7 +56,6 @@ public abstract class Produto implements IPrinter {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-    //    if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
         return Objects.equals(id, produto.id);
     }

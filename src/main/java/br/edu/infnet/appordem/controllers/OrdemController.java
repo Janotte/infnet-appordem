@@ -1,7 +1,7 @@
-package br.edu.infnet.appordem.controller;
+package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Ordem;
-import br.edu.infnet.appordem.service.AppImpressao;
+import br.edu.infnet.appordem.services.AppImpressao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
