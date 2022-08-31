@@ -1,6 +1,7 @@
 package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Ordem;
+import br.edu.infnet.appordem.model.domain.Situacao;
 import br.edu.infnet.appordem.services.AppImpressao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,6 +61,8 @@ public class OrdemController {
 
     @PostMapping("/ordem/adicionar")
     public String create(@ModelAttribute("ordem") Ordem ordem) {
+        ordem.setSituacao(Situacao.ABERTA);
+        ordem.setDataAbertura(new Date(System.currentTimeMillis()));
         incluir(ordem);
         return "redirect:/ordens";
     }

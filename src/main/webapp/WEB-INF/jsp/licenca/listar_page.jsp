@@ -2,6 +2,10 @@
 
 <%@ include file="../common/header.jspf"%>
 
+<header>
+    <%@ include file="../common/navigation.jspf"%>
+</header>
+
 <main class="container-flex col-12">
     <div id="top" class="row d-flex align-items-baseline">
         <div class="col-md-3 ms-3">
@@ -19,7 +23,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <a href="/licenca/adicionar" class="btn btn-primary">Novo Licença</a>
+            <a href="/licenca/adicionar" class="btn btn-primary">Nova Licença</a>
         </div>
     </div> <!-- /#top -->
     <hr>

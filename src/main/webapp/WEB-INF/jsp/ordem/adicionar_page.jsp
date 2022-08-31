@@ -2,42 +2,86 @@
 
 <%@ include file="../common/header.jspf"%>
 
-<main class="container col-11 col-md-6" id="form-container">
+<header>
+    <%@ include file="../common/navigation.jspf"%>
+</header>
+
+<main class="container col-11 col-md-6 mb-50" id="form-container">
     <div id="top" class="row gx-5 ms-3">
         <h2 class="page-header">${pageTitle}</h2>
     </div> <!-- /#top -->
     <div id="form" class="row gx-5">
-        <form:form action="${formAction}" method="POST" modelAttribute="servico">
+        <form:form action="${formAction}" method="POST" modelAttribute="ordem">
             <fieldset>
-                <div class="form-floating mb-3">
-                   <form:input path="nome" type="text" class="form-control" id="nome" name="nome" placeholder="Nome"/>
-                   <form:label path="nome" for="nome" class="form-label">Nome</form:label>
+                <div class="row align-items-center gx-2">
+                    <div class="form-floating col-md-3 mb-3">
+                        <form:select path="tipoAtendimento" class="form-select" aria-label="Tipo de Atendimento">
+                            <option selected>Selecione o tipo de Atendimento</option>
+                            <form:option value="INTERNO">Interno</form:option>
+                            <form:option value="REMOTO">Remoto</form:option>
+                            <form:option value="EXTERNO">Concluída</form:option>
+                        </form:select>
+                        <form:label path="tipoAtendimento" for="tipoAtendimento" class="form-label ms-3">Tipo de Atendimento</form:label>
+                    </div>
                 </div>
                 <div class="form-floating mb-3">
-                   <form:input path="custoCompra" type="text" class="form-control" name="custoCompra" placeholder="Custo de compra"/>
-                   <form:label path="custoCompra" for="custoCompra" class="form-label">Custo de Compra</form:label>
+                    <form:input path="cliente.nome" type="text" class="form-control" name="cliente" placeholder="Cliente"/>
+                    <form:label path="cliente" for="cliente" class="form-label">Cliente</form:label>
                 </div>
                 <div class="form-floating mb-3">
-                   <form:input path="garantia" type="text" class="form-control" name="garantia" placeholder="Garantia"/>
-                   <form:label path="garantia" for="garantia" class="form-label">Garantia</form:label>
+                    <form:input path="equipamento" type="text" class="form-control" name="equipamento" placeholder="Equipamento"/>
+                    <form:label path="equipamento" for="equipamento" class="form-label">Equipamento</form:label>
                 </div>
                 <div class="form-floating mb-3">
-                    <form:select path="tipoServico" class="form-select" aria-label="Tipo de Serviço">
-                      <option selected>Selecione o tipo de serviço</option>
-                        <form:option value="MANUTENCAO_SISTEMAS">Manutenção de sistemas</form:option>
-                        <form:option value="MANUTENCAO_HARDWARE">Manutenção de hardware</form:option>
-                        <form:option value="MANUTENCAO_INFRAESTRUTURA">Manutenção de infra estrutura</form:option>
-                    </form:select>
-                    <form:label path="tipoServico" for="tipoServico" class="form-label">Tipo de serviço</form:label>
+                    <form:input path="problema" type="text" class="form-control" name="problema" placeholder="Problema"/>
+                    <form:label path="problema" for="problema" class="form-label">Problema</form:label>
                 </div>
                 <div class="form-floating mb-3">
-                   <form:input path="classificacaoFiscal" type="text" class="form-control" name="classificacaoFiscal" placeholder="Classificação fiscal"/>
-                   <form:label path="classificacaoFiscal" for="classificacaoFiscal" class="form-label">Classificação Fiscal</form:label>
+                    <form:input path="solucao" type="text" class="form-control" name="problema" placeholder="Solução"/>
+                    <form:label path="solucao" for="solucao" class="form-label">Solução</form:label>
+                </div>
+                <table class="table table-striped" cellspacing="0" cellpadding="0">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Qt</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col" class="actions">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${ordem.produtos}" var="item">
+                               <tr>
+                                   <td>${item.id}</td>
+                                   <td>${item.nome}</td>
+                                   <td>1</td>
+                                   <td><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${item.precoVenda}" /></td>
+                                   <td class="actions">
+                                       <a class="btn btn-info btn-sm" href="/ordem/produtos/${item.id}/atualizar"
+                                           data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+                                           <i class="bi bi-check-circle text-light"></i>
+                                       </a>
+                                       <a class="btn btn-danger btn-sm" href="#"
+                                          data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-href="/ordem/produtos/${item.id}/excluir"
+                                          data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
+                                          <i class="bi bi-trash text-light"></i>
+                                      </a>
+                                   </td>
+                               </tr>
+
+                            </c:forEach>
+                        </tbody>
+                </table>
+                <div class="form-floating mb-3">
+                    <form:input path="observacao" type="text" class="form-control" name="observacao" placeholder="Observações"/>
+                    <form:label path="observacao" for="observacao" class="form-label">Observações</form:label>
                 </div>
             </fieldset>
-             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">${pageTitle}</button>
-                <a href="/servicos" class="btn btn-secondary">Cancelar</a>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="btn btn-primary" value=${pageTitle}>
+                <a href="/clientes" class="btn btn-link">Cancelar</a>
             </div>
         </form:form>
     </div> <!-- /#form -->

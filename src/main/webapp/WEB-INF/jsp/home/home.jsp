@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ include file="../common/header.jspf"%>
+
+<header>
+    <%@ include file="../common/navigation.jspf"%>
+</header>
 
 <main class="container-flex col-12">
     <div id="list" class"row">

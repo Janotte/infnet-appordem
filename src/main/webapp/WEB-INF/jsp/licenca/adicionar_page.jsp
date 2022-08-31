@@ -3,11 +3,15 @@
 
 <%@ include file="../common/header.jspf"%>
 
+<header>
+    <%@ include file="../common/navigation.jspf"%>
+</header>
+
 <main class="container col-11 col-md-6" id="form-container">
     <div id="top" class="row gx-5 ms-3">
         <h2 class="page-header">${pageTitle}</h2>
     </div> <!-- /#top -->
-    <div id="form" class="row gx-5">
+    <div class="row gx-5">
         <form:form action="${formAction}" method="POST" modelAttribute="licenca">
             <fieldset>
                 <div class="form-floating mb-3">
@@ -33,7 +37,7 @@
             </fieldset>
              <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">${pageTitle}</button>
-                <a href="/licencas" class="btn btn-secondary">Cancelar</a>
+                <a href="/licencas" class="btn btn-link">Cancelar</a>
             </div>
         </form:form>
     </div> <!-- /#form -->

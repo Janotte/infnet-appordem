@@ -3,6 +3,10 @@
 
 <%@ include file="../common/header.jspf"%>
 
+<header>
+    <%@ include file="../common/navigation.jspf"%>
+</header>
+
 <main class="container col-11 col-md-6" id="form-container">
     <div id="top" class="row gx-5 ms-3">
         <h2 class="page-header">${pageTitle}</h2>
@@ -40,8 +44,8 @@
                 </div>
             </fieldset>
              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">${pageTitle}</button>
-                <a href="/componentes" class="btn btn-secondary">Cancelar</a>
+                <input type="submit" class="btn btn-primary" value=${pageTitle}>
+                <a href="/componentes" class="btn btn-link">Cancelar</a>
             </div>
         </form:form>
     </div> <!-- /#form -->

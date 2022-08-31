@@ -20,6 +20,78 @@ body .btn {
     margin-bottom: 30px;
 }
 
+#top button[type="submit"],
+#top a {
+    background-color: #6C62FF;
+    border-color: #6C62FF;
+}
+
+#top button[type="submit"]:hover,
+#top a:hover {
+    background-color: #8C82FF;
+    border-color: #8C82FF;
+}
+
 .input-group-append {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+
+/ * LOGIN FORM * /
+
+#form-container h2 {
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+#form-container a {
+    color: #333;
+    transition: .5s;
+}
+
+#form-container a:hover {
+    color: #6C62FF;
+}
+
+#form-container .form-control {
+    border: none;
+    border-bottom: 1px solid #CCC;
+    border-radius: 0;
+}
+
+#form-container .form-control:focus {
+    box-shadow: none;
+}
+
+#form-container .form-floating label {
+    color: #333;
+}
+
+#form-container .form-floating>.form-control:focus~label {
+    color: #222;
+}
+
+#form-container input[type="submit"],
+#form-container button[type="submit"],
+#form-container input[type="checkbox"]:checked {
+    background-color: #6C62FF;
+    border-color: #6C62FF;
+}
+#form-container button[type="submit"]:hover,
+#form-container input[type="submit"]:hover {
+    background-color: #8C82FF;
+    border-color: #8C82FF;
+}
+
+/* IMAGE */
+.row.align-items-center {
+    align-content: center;
+    padding: 50px 0;
+    height: 100%;
+}
+
+#link-container {
+    font-size: 1.2em;
+    text-align: center;
+    padding-top: 50px;
 }

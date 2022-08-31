@@ -14,23 +14,37 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/ordens">Ordem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/clientes">Cliente</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Produto
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/componentes">Componente</a></li>
-                            <li><a class="dropdown-item" href="/licencas">Licença</a></li>
-                            <li><a class="dropdown-item" href="/servicos">Serviço</a></li>
-                        </ul>
-                    </li>
+                        <c:if test="${not empty user}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ordens">Ordem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/clientes">Cliente</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Produto
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/componentes">Componente</a></li>
+                                <li><a class="dropdown-item" href="/licencas">Licença</a></li>
+                                <li><a class="dropdown-item" href="/servicos">Serviço</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/usuarios">Usuários</a>
+                        </li>
+                        </c:if>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <c:if test="${empty user}">
+                        <li><a class="nav-link" href="/login">Login <i class="bi bi-box-arrow-in-right"></i></a></li>
+                    </c:if>
+
+                    <c:if test="${not empty user}">
+                        <li><a class="nav-link" href="/logout">Logout ${user} <i class="bi bi-box-arrow-right"></i></a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>
