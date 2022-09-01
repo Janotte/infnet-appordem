@@ -1,79 +1,101 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@ include file="../common/header.jspf"%>
+<!DOCTYPE html>
+<html lang="pt-br" class="h-100">
+  <c:import url="/WEB-INF/jsp/common/head.jsp" />
 
-<header>
-    <%@ include file="../common/navigation.jspf"%>
-</header>
-
-<main class="container-flex col-12">
-    <div id="top" class="row d-flex align-items-baseline">
-        <div class="col-md-3 ms-3">
+  <body>
+    <div class="container-fluid">
+      <c:import url="/WEB-INF/jsp/common/navigation.jsp" />
+      <main class="container-flex col-12">
+        <div id="top" class="row d-flex align-items-baseline">
+          <div class="col-md-3 ms-3">
             <h2>Ordens</h2>
-        </div>
-        <div class="col-md-5">
+          </div>
+          <div class="col-md-5">
             <div class="input-group h2">
-                <input name="data[search]" class="form-control" id="search" type="text"
-                    placeholder="Pesquisar Ordens">
-                <span class="input-group-btn ms-2">
-                    <button class="btn btn-primary" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </span>
+              <input
+                name="data[search]"
+                class="form-control"
+                id="search"
+                type="text"
+                placeholder="Pesquisar Ordens"
+              />
+              <span class="input-group-btn ms-2">
+                <button class="btn btn-primary" type="submit">
+                  <i class="bi bi-search"></i>
+                </button>
+              </span>
             </div>
-        </div>
-        <div class="col-md-3">
+          </div>
+          <div class="col-md-3">
             <a href="/ordem/adicionar" class="btn btn-primary">Nova Ordem</a>
+          </div>
         </div>
-    </div> <!-- /#top -->
-    <hr>
-    <div id="list" class"row">
-        <div class="table-responsive col-md-12">
+        <!-- /#top -->
+        <hr />
+        <div id="list" class="row">
+          <div class="table-responsive col-md-12">
             <table class="table table-striped" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Data de Abertura</th>
-                        <th scope="col">Situação</th>
-                        <th scope="col">Atendimento</th>
-                        <th scope="col">Equipamento</th>
-                        <th scope="col">Problema</th>
-                        <th scope="col" class="actions">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="ordem" items="${ordemList}">
-                        <tr>
-                            <td>${ordem.id}</td>
-                            <fmt:formatDate value="${ordem.dataAbertura}" pattern="dd-MM-yyyy HH:mm:ss" var="dataAbertura" />
-                            <td>${dataAbertura}</td>
-                            <td>${ordem.situacao.descricao}</td>
-                            <td>${ordem.tipoAtendimento.descricao}</td>
-                            <td>${ordem.equipamento}</td>
-                            <td>${ordem.problema}</td>
-                            <td class="actions">
-                                <a class="btn btn-info btn-sm" href="/ordem/${ordem.id}/atualizar"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
-                                    <i class="bi bi-check-circle text-light"></i>
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#"
-                                   data-bs-toggle="modal" data-bs-target="#confirm-delete-modal" data-href="/ordem/${ordem.id}/excluir"
-                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
-                                   <i class="bi bi-trash text-light"></i>
-                               </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Data de Abertura</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Atendimento</th>
+                  <th scope="col">Equipamento</th>
+                  <th scope="col">Problema</th>
+                  <th scope="col" class="actions">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach var="ordem" items="${ordemList}">
+                  <tr>
+                    <td>${ordem.id}</td>
+                    <fmt:formatDate
+                      value="${ordem.dataAbertura}"
+                      pattern="dd-MM-yyyy HH:mm:ss"
+                      var="dataAbertura"
+                    />
+                    <td>${dataAbertura}</td>
+                    <td>${ordem.situacao.descricao}</td>
+                    <td>${ordem.tipoAtendimento.descricao}</td>
+                    <td>${ordem.equipamento}</td>
+                    <td>${ordem.problema}</td>
+                    <td class="actions">
+                      <a
+                        class="btn btn-info btn-sm"
+                        href="/ordem/${ordem.id}/atualizar"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Editar"
+                      >
+                        <i class="bi bi-check-circle text-light"></i>
+                      </a>
+                      <a
+                        class="btn btn-danger btn-sm"
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#confirm-delete-modal"
+                        data-href="/ordem/${ordem.id}/excluir"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Excluir"
+                      >
+                        <i class="bi bi-trash text-light"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </c:forEach>
+              </tbody>
             </table>
+          </div>
         </div>
-    </div> <!-- /#list -->
-    <div id="bottom" class="row">
-        <%@ include file="../common/pagination.jspf"%>
-    </div> <!-- /#bottom -->
-
-</div> <!-- /#main -->
-
-<%@ include file="../common/delete-modal.jspf"%>
-
-<%@ include file="../common/footer.jspf"%>
+        <!-- /#list -->
+      </main>
+      <c:import url="/WEB-INF/jsp/common/footer.jsp" />
+    </div>
+    <c:import url="/WEB-INF/jsp/common/delete-modal.jsp" />
+  </body>
+</html>

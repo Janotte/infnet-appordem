@@ -34,13 +34,21 @@ public class UsuarioController {
         usuarioMap.remove(email);
     }
 
-    public static Usuario obterPorId(String email) {
+    public static Usuario obterPorEmail(String email) {
         return usuarioMap.get(email);
     }
 
     public static void atualizar(String email, Usuario usuario) {
         usuarioMap.put(email, usuario);
         AppImpressao.relatorio("Atualizado o usuário: " + usuario.getNome(), usuario);
+    }
+
+    public static Usuario validar(String email, String senha) {
+        Usuario usuario = obterPorEmail(email);
+        if(usuario != null && usuario.getSenha().equals(senha)) {;
+            return usuario;
+        }
+        return null;
     }
 
     @GetMapping("/usuarios")
@@ -63,15 +71,25 @@ public class UsuarioController {
         return "redirect:/usuarios";
     }
 
+
+    @GetMapping("/signup")
+    public String  signupPage(Model model) {
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("pageTitle", "Cadastrar");
+        model.addAttribute("formAction", "/usuario/registrar");
+
+        return "login/signupPage";
+    }
+
     @PostMapping("/usuario/registrar")
     public String signup(@ModelAttribute("usuario") Usuario usuario) {
         incluir(usuario);
-        return "redirect:/login";
+        return "redirect:/";
     }
 
     @GetMapping("/usuario/{email}/atualizar")
     public String updatePage(@PathVariable(value = "email") String email, HttpServletRequest req) {
-        req.setAttribute("usuario", obterPorId(email));
+        req.setAttribute("usuario", obterPorEmail(email));
         req.setAttribute("pageTitle", "Atualizar Usuário");
         req.setAttribute("formAction", "/usuario/" + email + "/atualizar");
         return "/usuario/atualizar_page";

@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
-<html lang="pt-br" class="h-100">
-
+<!-- Head -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="">
@@ -27,6 +20,4 @@
     <script src="${contextPath}/resources/js/scripts.js" defer></script>
     <title>APP Ordem</title>
 </head>
-
-<body>
-    <div class="container-fluid">
+<!-- Head END -->

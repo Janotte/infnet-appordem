@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!-- Modal -->
 <div class="modal fade" id="confirm-delete-modal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
@@ -18,3 +18,4 @@
         </div>
     </div>
 </div>
+<!-- Modal END -->

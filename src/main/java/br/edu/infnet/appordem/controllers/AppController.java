@@ -20,13 +20,12 @@ public class AppController {
 
     @PostMapping("/login")
     public String login(Model model, @RequestParam String email, @RequestParam  String senha) {
-
-        if(email.equalsIgnoreCase(senha)) {
-            String nome = "Admin";
-            model.addAttribute("user", nome);
-
+        Usuario usuario = UsuarioController.validar(email, senha);
+        if(usuario != null) {
+            model.addAttribute("user", usuario);
             return "home/home";
         }
+
         return "redirect:/login";
     }
 
@@ -35,14 +34,4 @@ public class AppController {
         model.addAttribute("user", "");
         return "redirect:/";
     }
-
-    @GetMapping("/signup")
-    public String  signupPage(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("pageTitle", "Cadastrar");
-        model.addAttribute("formAction", "/usuario/registrar");
-
-        return "login/signupPage";
-    }
-
 }
