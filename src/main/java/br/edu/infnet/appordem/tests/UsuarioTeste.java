@@ -1,8 +1,9 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.controllers.UsuarioController;
 import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
 import br.edu.infnet.appordem.model.domain.Usuario;
+import br.edu.infnet.appordem.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -16,6 +17,9 @@ import java.io.IOException;
 @Component
 @Order(6)
 public class UsuarioTeste implements ApplicationRunner {
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -39,11 +43,11 @@ public class UsuarioTeste implements ApplicationRunner {
                         String[] campos = linha.split(";");
 
                         Usuario usuario = new Usuario();
-                        usuario.setNome(campos[0]);
-                        usuario.setEmail(campos[1]);
+                        usuario.setEmail(campos[0]);
+                        usuario.setNome(campos[1]);
                         usuario.setSenha(campos[2]);
 
-                        UsuarioController.incluir(usuario);
+                        usuarioService.incluir(usuario);
                     } catch (CampoObrigatorioException e) {
                         System.out.println("[ERRO] - USUÁRIO: " + e.getMessage());
                     }

@@ -5,6 +5,8 @@ import br.edu.infnet.appordem.exceptions.ComponenteComNcmInvalidoException;
 import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.model.domain.Componente;
+import br.edu.infnet.appordem.services.ComponenteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -18,6 +20,9 @@ import java.io.IOException;
 @Component
 @Order(2)
 public class ComponenteTeste implements ApplicationRunner {
+
+    @Autowired
+    private ComponenteService componenteService;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -48,7 +53,7 @@ public class ComponenteTeste implements ApplicationRunner {
                         componente.setCustoCompra(componente.calcularValorCusto());
                         componente.setPrecoVenda(componente.calcularPrecoVenda());
 
-                        ComponenteController.incluir(componente);
+                        componenteService.incluir(componente);
                     } catch (ValorVendaInvalidoException | ValorNegativoException | ComponenteComNcmInvalidoException e) {
                         System.out.println("[ERRO] - COMPONENTE: " + e.getMessage());
                     }

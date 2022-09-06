@@ -5,6 +5,8 @@ import br.edu.infnet.appordem.exceptions.LicencaSemFabricanteException;
 import br.edu.infnet.appordem.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.model.domain.Licenca;
+import br.edu.infnet.appordem.services.LicencaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -18,6 +20,9 @@ import java.io.IOException;
 @Component
 @Order(3)
 public class LicencaTeste implements ApplicationRunner {
+
+    @Autowired
+    private LicencaService licencaService;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -48,7 +53,7 @@ public class LicencaTeste implements ApplicationRunner {
                         licenca.setValidade(campos[3]);
                         licenca.setFabricante(campos[4]);
 
-                        LicencaController.incluir(licenca);
+                        licencaService.incluir(licenca);
                     } catch (ValorNegativoException | ValorVendaInvalidoException | LicencaSemFabricanteException e) {
                         System.out.println("[ERRO] - LICENÇA: " + e.getMessage());
                     }

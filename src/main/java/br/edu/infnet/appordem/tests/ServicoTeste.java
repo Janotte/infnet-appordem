@@ -7,6 +7,8 @@ import br.edu.infnet.appordem.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.model.domain.Servico;
 import br.edu.infnet.appordem.model.domain.TipoServiço;
+import br.edu.infnet.appordem.services.ServicoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -20,6 +22,9 @@ import java.io.IOException;
 @Component
 @Order(4)
 public class ServicoTeste implements ApplicationRunner {
+
+    @Autowired
+    private ServicoService servicoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -50,7 +55,7 @@ public class ServicoTeste implements ApplicationRunner {
                         servico.setPrecoVenda(servico.calcularPrecoVenda());
                         servico.setGarantia(campos[4]);
 
-                        ServicoController.incluir(servico);
+                        servicoService.incluir(servico);
                     } catch (CampoObrigatorioException | ValorNegativoException | ValorVendaInvalidoException | ServicoComGarantiaInvalidaException e) {
                         System.out.println("[ERRO] - SERVIÇO: " + e.getMessage());
                     }

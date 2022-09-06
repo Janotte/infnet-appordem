@@ -1,9 +1,10 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.controllers.ClienteController;
 import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
 import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.model.domain.Cliente;
+import br.edu.infnet.appordem.services.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -17,6 +18,9 @@ import java.io.IOException;
 @Component
 @Order(1)
 public class ClienteTeste implements ApplicationRunner {
+
+    @Autowired
+    private ClienteService clienteService;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -41,7 +45,7 @@ public class ClienteTeste implements ApplicationRunner {
 
                         Cliente cliente = new Cliente(campos[0], campos[1], campos[2], campos[3]);
 
-                        ClienteController.incluir(cliente);
+                        clienteService.incluir(cliente);
                     } catch (CampoObrigatorioException | CpfCnpjInvalidoException e) {
                         System.out.println("[ERRO] - CLIENTE: " + e.getMessage());
                     }

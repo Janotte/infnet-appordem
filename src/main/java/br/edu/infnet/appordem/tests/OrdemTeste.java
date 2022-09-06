@@ -1,11 +1,12 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.controllers.OrdemController;
 import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
 import br.edu.infnet.appordem.exceptions.ClienteNuloException;
 import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.exceptions.OrdemSemProdutoException;
 import br.edu.infnet.appordem.model.domain.*;
+import br.edu.infnet.appordem.services.OrdemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -20,6 +21,9 @@ import java.util.Set;
 @Component
 @Order(5)
 public class OrdemTeste implements ApplicationRunner {
+
+    @Autowired
+    private OrdemService ordemService;
 
     private FileReader arquivo;
 
@@ -90,7 +94,7 @@ public class OrdemTeste implements ApplicationRunner {
                         ordem.setSolucao(campos[9]);
                         ordem.setObservacao(campos[10]);
 
-                        OrdemController.incluir(ordem);
+                        ordemService.incluir(ordem);
 
                     } catch (CampoObrigatorioException | CpfCnpjInvalidoException | ClienteNuloException | OrdemSemProdutoException e) {
                         System.out.println("[ERRO] - ORDEM: " + e.getMessage());
