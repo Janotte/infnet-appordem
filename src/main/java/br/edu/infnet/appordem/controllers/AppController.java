@@ -1,6 +1,7 @@
 package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Usuario;
+import br.edu.infnet.appordem.services.AppService;
 import br.edu.infnet.appordem.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,14 @@ import javax.servlet.http.HttpSession;
 public class AppController {
 
     @Autowired
+    private AppService appService;
+
+    @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping("/")
-    public String homePage() {
+    public String homePage(Model model) {
+        model.addAttribute("projeto", appService.obterProjeto());
         return "home/home";
     }
 
@@ -35,7 +40,7 @@ public class AppController {
         Usuario usuario = usuarioService.validar(email, senha);
         if (usuario != null) {
             model.addAttribute("user", usuario);
-            return "home/home";
+            return "redirect:/";
         }
 
         return "redirect:/login";

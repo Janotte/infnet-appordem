@@ -7,7 +7,7 @@ import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 public class Servico extends Produto {
 
     private String garantia;
-    private TipoServiço tipoServico;
+    private TipoServico tipoServico;
     private String classificacaoFiscal;
 
     public String getGarantia() {
@@ -17,7 +17,7 @@ public class Servico extends Produto {
     public void setGarantia(String garantia) throws ServicoComGarantiaInvalidaException {
             String[] campos = garantia.split(" ");
 
-            Float tempo = Float.parseFloat(campos[0]);
+            float tempo = Float.parseFloat(campos[0]);
             var periodo = campos[1];
 
             if (periodo.toLowerCase().contains("ano") && tempo < 1)
@@ -32,11 +32,11 @@ public class Servico extends Produto {
         this.garantia = garantia;
     }
 
-    public TipoServiço getTipoServico() {
+    public TipoServico getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(TipoServiço tipoServico) {
+    public void setTipoServico(TipoServico tipoServico) {
         this.tipoServico = tipoServico;
     }
 
@@ -51,7 +51,7 @@ public class Servico extends Produto {
     @Override
     public double calcularPrecoVenda() throws ValorVendaInvalidoException {
 
-        Double valor = getCustoCompra() * 2.5;
+        double valor = getCustoCompra() * 2.5;
 
         if (getCustoCompra() < 0)
             throw new ValorNegativoException("O custo de compra do serviço não pode ser negativo.");

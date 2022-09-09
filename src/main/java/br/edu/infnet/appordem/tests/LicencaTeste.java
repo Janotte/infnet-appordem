@@ -1,6 +1,5 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.controllers.LicencaController;
 import br.edu.infnet.appordem.exceptions.LicencaSemFabricanteException;
 import br.edu.infnet.appordem.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;

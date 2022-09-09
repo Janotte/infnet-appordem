@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-@Order(5)
+@Order(6)
 public class OrdemTeste implements ApplicationRunner {
 
     @Autowired
@@ -43,7 +43,7 @@ public class OrdemTeste implements ApplicationRunner {
 
         Servico servico = new Servico();
         servico.setId(2L);
-        servico.setTipoServico(TipoServiço.MANUTENCAO_SISTEMAS);
+        servico.setTipoServico(TipoServico.MANUTENCAO_SISTEMAS);
         servico.setClassificacaoFiscal("1.07 – Suporte técnico em informática");
         servico.setNome("Suporte técnico em sistemas");
         servico.setCustoCompra(80.00);
@@ -59,7 +59,7 @@ public class OrdemTeste implements ApplicationRunner {
         licenca.setValidade("12 meses");
         licenca.setFabricante("ESET Brasil");
 
-       ;
+        ;
 
         String dir = "C:/Pos2022/appordem/src/main/resources/";
         String arq = "ordens.txt";

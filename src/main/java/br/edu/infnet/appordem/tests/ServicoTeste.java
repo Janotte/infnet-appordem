@@ -1,12 +1,11 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.controllers.ServicoController;
 import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
 import br.edu.infnet.appordem.exceptions.ServicoComGarantiaInvalidaException;
 import br.edu.infnet.appordem.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.model.domain.Servico;
-import br.edu.infnet.appordem.model.domain.TipoServiço;
+import br.edu.infnet.appordem.model.domain.TipoServico;
 import br.edu.infnet.appordem.services.ServicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -20,7 +19,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @Component
-@Order(4)
+@Order(5)
 public class ServicoTeste implements ApplicationRunner {
 
     @Autowired
@@ -48,7 +47,7 @@ public class ServicoTeste implements ApplicationRunner {
                         String[] campos = linha.split(";");
 
                         Servico servico = new Servico();
-                        servico.setTipoServico(TipoServiço.valueOf(campos[0]));
+                        servico.setTipoServico(TipoServico.valueOf(campos[0]));
                         servico.setClassificacaoFiscal(campos[1]);
                         servico.setNome(campos[2]);
                         servico.setCustoCompra(Double.valueOf(campos[3]));

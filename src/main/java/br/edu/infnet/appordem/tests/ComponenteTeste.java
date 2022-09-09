@@ -1,9 +1,8 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.controllers.ComponenteController;
 import br.edu.infnet.appordem.exceptions.ComponenteComNcmInvalidoException;
-import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.exceptions.ValorNegativoException;
+import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.model.domain.Componente;
 import br.edu.infnet.appordem.services.ComponenteService;
 import org.springframework.beans.factory.annotation.Autowired;
