@@ -36,7 +36,7 @@ public class Projeto implements IPrinter {
 
     @Override
     public void imprimir() {
-        System.out.println("- - " + nome + " | " + descricao);
+        System.out.println("- " + nome + " | " + descricao);
         for (Classe c : classes) {
             c.imprimir();
         }

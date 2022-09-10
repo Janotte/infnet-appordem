@@ -48,7 +48,7 @@
       <footer class="footer mt-auto py-3 fixed-bottom bg-dark">
         <div class="container">
           <span class="text-muted"
-            >Aplicativo de Gestão de Ordem de Serviço</span
+            > ${projeto.descricao}</span
           >
         </div>
       </footer>

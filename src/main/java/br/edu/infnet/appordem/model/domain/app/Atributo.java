@@ -45,6 +45,6 @@ public class Atributo implements IPrinter {
 
     @Override
     public void imprimir() {
-        System.out.println(this);
+        System.out.println("- - - " + this);
     }
 }
