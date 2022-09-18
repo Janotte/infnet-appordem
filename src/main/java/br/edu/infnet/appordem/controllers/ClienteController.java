@@ -1,8 +1,8 @@
 package br.edu.infnet.appordem.controllers;
 
-import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.model.domain.Cliente;
-import br.edu.infnet.appordem.services.ClienteService;
+import br.edu.infnet.appordem.model.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

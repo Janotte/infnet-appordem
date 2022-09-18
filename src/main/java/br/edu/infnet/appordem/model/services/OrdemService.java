@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.services;
+package br.edu.infnet.appordem.model.services;
 
 import br.edu.infnet.appordem.model.domain.Ordem;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ public class OrdemService {
     private static Long id = 1L;
 
     public void incluir(Ordem ordem) {
+        System.out.println(ordem);
         ordem.setId(id++);
         ordemMap.put(ordem.getId(), ordem);
         AppImpressao.relatorio("Incluído a ordem: " + ordem.getId(), ordem);

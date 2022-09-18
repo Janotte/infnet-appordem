@@ -1,30 +1,54 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.ClienteNuloException;
-import br.edu.infnet.appordem.exceptions.OrdemSemProdutoException;
+import br.edu.infnet.appordem.model.exceptions.ClienteNuloException;
+import br.edu.infnet.appordem.model.exceptions.OrdemSemProdutoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Set;
 
 public class Ordem implements IPrinter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "data_abertura")
     private Date dataAbertura;
+
+    @Column(name = "situacao")
     private Situacao situacao;
+
+    @Column(name = "tipo_atendimento", nullable = false)
     private TipoAtendimento tipoAtendimento;
+
+    @Column(name = "cliente_id", nullable = false)
     private Cliente cliente;
+
+    @Column(name = "equipamento", nullable = false)
     private String equipamento;
+
+    @Column(name = "problema", nullable = false)
     private String problema;
+
+    @Column(name = "solucao")
     private String solucao;
+
     private Set<Produto> produtos;
+
+    @Column(name = "observacao")
     private String observacao;
 
     public Ordem(Cliente cliente, Set<Produto> produtos) throws ClienteNuloException, OrdemSemProdutoException {
 
         if (cliente == null) throw new ClienteNuloException("Impossível criar uma Ordem sem um cliente!");
 
-        if (produtos.size() < 1) throw new OrdemSemProdutoException("Impossível criar uma Ordem sem Produtos!");
+      //  if (produtos.size() < 1) throw new OrdemSemProdutoException("Impossível criar uma Ordem sem Produtos!");
 
         this.dataAbertura = new Date(System.currentTimeMillis());
         this.cliente = cliente;

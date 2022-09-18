@@ -1,7 +1,7 @@
 package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Componente;
-import br.edu.infnet.appordem.services.ComponenteService;
+import br.edu.infnet.appordem.model.services.ComponenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

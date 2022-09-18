@@ -1,13 +1,20 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.LicencaSemFabricanteException;
-import br.edu.infnet.appordem.exceptions.ValorNegativoException;
-import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.LicencaSemFabricanteException;
+import br.edu.infnet.appordem.model.exceptions.ValorNegativoException;
+import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
+
+import javax.persistence.Column;
 
 public class Licenca extends Produto {
 
+    @Column(name = "quantidade_dispositivos", nullable = false)
     private int quantidadeDispositivos;
+
+    @Column(name = "validade", length = 60, nullable = false)
     private String validade;
+
+    @Column(name = "fabricante", length = 60)
     private String fabricante;
 
     public int getQuantidadeDispositivos() {

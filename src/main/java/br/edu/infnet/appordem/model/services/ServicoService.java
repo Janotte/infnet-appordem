@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.services;
+package br.edu.infnet.appordem.model.services;
 
 import br.edu.infnet.appordem.model.domain.Servico;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class ServicoService {
 
     private static Map<Long, Servico> servicoMap = new HashMap<>();
-    private static Long id = 1L;
+    private static Long id = 20L;
 
     public void incluir(Servico servico) {
         servico.setId(id++);

@@ -1,10 +1,10 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.exceptions.LicencaSemFabricanteException;
-import br.edu.infnet.appordem.exceptions.ValorNegativoException;
-import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.LicencaSemFabricanteException;
+import br.edu.infnet.appordem.model.exceptions.ValorNegativoException;
+import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.model.domain.Licenca;
-import br.edu.infnet.appordem.services.LicencaService;
+import br.edu.infnet.appordem.model.services.LicencaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -27,38 +27,32 @@ public class LicencaTeste implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         System.out.println("\n### Licenças:");
-
         String dir = "C:/Pos2022/appordem/src/main/resources/";
-        String arq = "licencas.txt";
+        String arq = "produtos.txt";
 
         try {
             FileReader arquivo = new FileReader(dir + arq);
             BufferedReader leitura = new BufferedReader(arquivo);
-
             try {
-
                 String linha = leitura.readLine();
-
                 while (linha != null) {
-
+                    String[] campos = linha.split(";");
                     try {
-                        String[] campos = linha.split(";");
-
-                        Licenca licenca = new Licenca();
-                        licenca.setNome(campos[0]);
-                        licenca.setCustoCompra(Double.valueOf(campos[1]));
-                        licenca.setPrecoVenda(licenca.calcularPrecoVenda());
-                        licenca.setQuantidadeDispositivos(Integer.valueOf(campos[2]));
-                        licenca.setValidade(campos[3]);
-                        licenca.setFabricante(campos[4]);
-
-                        licencaService.incluir(licenca);
+                        if (campos[0].toUpperCase().equals("L")) {
+                            Licenca licenca = new Licenca();
+                            licenca.setNome(campos[1]);
+                            licenca.setCustoCompra(Double.valueOf(campos[2]));
+                            licenca.setPrecoVenda(licenca.calcularPrecoVenda());
+                            licenca.setQuantidadeDispositivos(Integer.valueOf(campos[3]));
+                            licenca.setValidade(campos[4]);
+                            licenca.setFabricante(campos[5]);
+                            licencaService.incluir(licenca);
+                        }
                     } catch (ValorNegativoException | ValorVendaInvalidoException | LicencaSemFabricanteException e) {
                         System.out.println("[ERRO] - LICENÇA: " + e.getMessage());
                     }
                     linha = leitura.readLine();
                 }
-
             } catch (FileNotFoundException e) {
                 System.out.println("[ERRO] O arquivo não foi encontrado!");
             } finally {

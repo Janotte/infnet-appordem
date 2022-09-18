@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.exceptions;
+package br.edu.infnet.appordem.model.exceptions;
 
 public class LicencaSemFabricanteException extends RuntimeException {
 

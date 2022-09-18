@@ -153,7 +153,19 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Qt</th>
                     <th scope="col">Valor</th>
-                    <th scope="col" class="actions">Ações</th>
+                    <th scope="col" class="actions">
+                    <input
+                        type="submit"
+                        class="btn btn-primary btn-sm"
+                        href="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#insert-modal"
+                        data-href=""
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        value="Adicionar"
+                      />
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -228,5 +240,6 @@
       <!-- /#main -->
       <c:import url="/WEB-INF/jsp/common/footer.jsp" />
     </div>
+    <c:import url="/WEB-INF/jsp/common/insert-modal.jsp" />
   </body>
 </html>

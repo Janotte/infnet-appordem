@@ -1,9 +1,9 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
-import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.model.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.model.domain.Cliente;
-import br.edu.infnet.appordem.services.ClienteService;
+import br.edu.infnet.appordem.model.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -26,33 +26,24 @@ public class ClienteTeste implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         System.out.println("\n### Clientes:");
-
         String dir = "C:/Pos2022/appordem/src/main/resources/";
         String arq = "clientes.txt";
 
         try {
             FileReader arquivo = new FileReader(dir + arq);
             BufferedReader leitura = new BufferedReader(arquivo);
-
             try {
-
                 String linha = leitura.readLine();
-
                 while (linha != null) {
-
+                    String[] campos = linha.split(";");
                     try {
-                        String[] campos = linha.split(";");
-
                         Cliente cliente = new Cliente(campos[0], campos[1], campos[2], campos[3]);
-
                         clienteService.incluir(cliente);
                     } catch (CampoObrigatorioException | CpfCnpjInvalidoException e) {
                         System.out.println("[ERRO] - CLIENTE: " + e.getMessage());
                     }
-
                     linha = leitura.readLine();
                 }
-
             } catch (FileNotFoundException e) {
                 System.out.println("[ERRO] O arquivo não foi encontrado!");
             } finally {
@@ -66,6 +57,5 @@ public class ClienteTeste implements ApplicationRunner {
         } finally {
             System.out.println("Leitura encerrada.");
         }
-
     }
 }

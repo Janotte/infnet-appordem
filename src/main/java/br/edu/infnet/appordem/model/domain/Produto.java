@@ -1,15 +1,29 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
+
 
 public abstract class Produto implements IPrinter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome", length = 60, nullable = false)
     private String nome;
+
+    @Column(name = "custo_compra", nullable = false)
     private Double custoCompra;
+
+    @Column(name = "preco_venda", nullable = false)
     private Double precoVenda;
 
     public abstract double calcularPrecoVenda() throws ValorVendaInvalidoException;
@@ -35,7 +49,9 @@ public abstract class Produto implements IPrinter {
         return nome;
     }
 
-    public void setNome(String nome) { this.nome = nome; }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public Double getCustoCompra() {
         return custoCompra;

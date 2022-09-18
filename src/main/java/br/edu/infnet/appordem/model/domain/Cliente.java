@@ -1,15 +1,29 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
-import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
+import br.edu.infnet.appordem.model.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.model.exceptions.CpfCnpjInvalidoException;
 
+import javax.persistence.*;
+
+@Entity
 public class Cliente implements IPrinter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    private String cpfCnpj;
+
+    @Column(name = "nome", length = 60, nullable = false)
     private String nome;
+
+    @Column(name = "cpf_cnpj", length = 20, unique = true)
+    private String cpfCnpj;
+
+    @Column(name = "celular", length = 15)
     private String celular;
+
+    @Column(name = "email", length = 100)
     private String email;
 
     public Cliente(String nome, String cpfCnpj, String celular, String email) throws CampoObrigatorioException, CpfCnpjInvalidoException {
@@ -22,6 +36,14 @@ public class Cliente implements IPrinter {
 
         if (cpfCnpj.isBlank()) throw new CpfCnpjInvalidoException("O CPF ou CNPJ do cliente é necessário.");
 
+        this.nome = nome;
+        this.cpfCnpj = cpfCnpj;
+        this.celular = celular;
+        this.email = email;
+    }
+
+    public Cliente(Long id, String nome, String cpfCnpj, String celular, String email) {
+        this.id = id;
         this.nome = nome;
         this.cpfCnpj = cpfCnpj;
         this.celular = celular;

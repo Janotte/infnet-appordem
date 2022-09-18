@@ -1,13 +1,25 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.model.exceptions.CampoObrigatorioException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
+import javax.persistence.*;
+
+@Entity
 public class Usuario implements IPrinter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome", length = 60, nullable = false)
     private String nome;
+
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
+
+    @Column(name = "senha", nullable = false)
     private String senha;
 
     public Usuario() {

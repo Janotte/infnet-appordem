@@ -3,7 +3,7 @@ package br.edu.infnet.appordem.tests;
 import br.edu.infnet.appordem.model.domain.app.Atributo;
 import br.edu.infnet.appordem.model.domain.app.Classe;
 import br.edu.infnet.appordem.model.domain.app.Projeto;
-import br.edu.infnet.appordem.services.AppService;
+import br.edu.infnet.appordem.model.services.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

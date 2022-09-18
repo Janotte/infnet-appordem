@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.services;
+package br.edu.infnet.appordem.model.services;
 
 import br.edu.infnet.appordem.model.domain.Licenca;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.Map;
 public class LicencaService {
 
     private static Map<Long, Licenca> licencaMap = new HashMap<>();
-    private static Long id = 1L;
+    private static Long id = 10L;
 
     public void incluir(Licenca licenca) {
         licenca.setId(id++);

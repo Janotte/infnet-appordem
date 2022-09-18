@@ -1,7 +1,7 @@
 package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Usuario;
-import br.edu.infnet.appordem.services.UsuarioService;
+import br.edu.infnet.appordem.model.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,4 +74,3 @@ public class UsuarioController {
         return "redirect:/usuarios";
     }
 }
-

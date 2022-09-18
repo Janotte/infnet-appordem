@@ -1,4 +1,4 @@
-package br.edu.infnet.appordem.services;
+package br.edu.infnet.appordem.model.services;
 
 import br.edu.infnet.appordem.model.domain.Componente;
 import org.springframework.stereotype.Service;

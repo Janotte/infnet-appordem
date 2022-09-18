@@ -1,13 +1,20 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.ComponenteComNcmInvalidoException;
-import br.edu.infnet.appordem.exceptions.ValorNegativoException;
-import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.ComponenteComNcmInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.ValorNegativoException;
+import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
+
+import javax.persistence.Column;
 
 public class Componente extends Produto {
 
+    @Column(name = "ncm", length = 60, nullable = false)
     private String ncm;
+
+    @Column(name = "valor_compra", nullable = false)
     private Double valorCompra;
+
+    @Column(name = "valor_frete")
     private Double valorFrete;
 
     public String getNcm() {
@@ -16,9 +23,9 @@ public class Componente extends Produto {
 
     public void setNcm(String ncm) throws ComponenteComNcmInvalidoException {
 
-        ncm = ncm.replaceAll("[^0-9]","");
+        ncm = ncm.replaceAll("[^0-9]", "");
 
-        if (ncm.length() != 8 ) {
+        if (ncm.length() != 8) {
             throw new ComponenteComNcmInvalidoException("O NCM deve conter 8 dígitos.");
         }
 
@@ -56,7 +63,8 @@ public class Componente extends Produto {
 
         Double valor = getCustoCompra() / 0.7;
 
-        if (valor <= 1.00) throw new ValorVendaInvalidoException("O valor de venda do componente não pode ser menor que 1.00.");
+        if (valor <= 1.00)
+            throw new ValorVendaInvalidoException("O valor de venda do componente não pode ser menor que 1.00.");
 
         return valor;
     }

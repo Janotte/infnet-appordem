@@ -1,13 +1,20 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.exceptions.ServicoComGarantiaInvalidaException;
-import br.edu.infnet.appordem.exceptions.ValorNegativoException;
-import br.edu.infnet.appordem.exceptions.ValorVendaInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.ServicoComGarantiaInvalidaException;
+import br.edu.infnet.appordem.model.exceptions.ValorNegativoException;
+import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
+
+import javax.persistence.Column;
 
 public class Servico extends Produto {
 
+    @Column(name = "garantia", length = 60, nullable = false)
     private String garantia;
+
+    @Column(name = "tipo_servico", length = 60, nullable = false)
     private TipoServico tipoServico;
+
+    @Column(name = "classificacao_fiscal", length = 60, nullable = false)
     private String classificacaoFiscal;
 
     public String getGarantia() {

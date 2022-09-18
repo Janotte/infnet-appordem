@@ -1,8 +1,8 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.model.exceptions.CampoObrigatorioException;
 import br.edu.infnet.appordem.model.domain.Usuario;
-import br.edu.infnet.appordem.services.UsuarioService;
+import br.edu.infnet.appordem.model.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,7 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @Component
-@Order(6)
+@Order(5)
 public class UsuarioTeste implements ApplicationRunner {
 
     @Autowired

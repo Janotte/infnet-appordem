@@ -1,11 +1,11 @@
 package br.edu.infnet.appordem.tests;
 
-import br.edu.infnet.appordem.exceptions.CampoObrigatorioException;
-import br.edu.infnet.appordem.exceptions.ClienteNuloException;
-import br.edu.infnet.appordem.exceptions.CpfCnpjInvalidoException;
-import br.edu.infnet.appordem.exceptions.OrdemSemProdutoException;
+import br.edu.infnet.appordem.model.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.model.exceptions.ClienteNuloException;
+import br.edu.infnet.appordem.model.exceptions.CpfCnpjInvalidoException;
+import br.edu.infnet.appordem.model.exceptions.OrdemSemProdutoException;
 import br.edu.infnet.appordem.model.domain.*;
-import br.edu.infnet.appordem.services.OrdemService;
+import br.edu.infnet.appordem.model.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -25,84 +27,73 @@ public class OrdemTeste implements ApplicationRunner {
     @Autowired
     private OrdemService ordemService;
 
+    @Autowired
+    private ClienteService clienteService;
+
+    @Autowired
+    private ComponenteService componenteService;
+
+    @Autowired
+    private LicencaService licencaService;
+
+    @Autowired
+    private ServicoService servicoService;
+
     private FileReader arquivo;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
         System.out.println("\n### Ordens:");
-
-        Componente componente = new Componente();
-        componente.setId(1L);
-        componente.setNome("SSD NVME 480Gb Corsair");
-        componente.setNcm("1111.11.11");
-        componente.setValorCompra(100.00);
-        componente.setValorFrete(10.00);
-        componente.setCustoCompra(componente.calcularValorCusto());
-        componente.setPrecoVenda(componente.calcularPrecoVenda());
-
-        Servico servico = new Servico();
-        servico.setId(2L);
-        servico.setTipoServico(TipoServico.MANUTENCAO_SISTEMAS);
-        servico.setClassificacaoFiscal("1.07 – Suporte técnico em informática");
-        servico.setNome("Suporte técnico em sistemas");
-        servico.setCustoCompra(80.00);
-        servico.setPrecoVenda(servico.calcularPrecoVenda());
-        servico.setGarantia("3 meses");
-
-        Licenca licenca = new Licenca();
-        licenca.setId(3L);
-        licenca.setNome("Antivirus ESET Internet Security");
-        licenca.setCustoCompra(76.91);
-        licenca.setPrecoVenda(licenca.calcularPrecoVenda());
-        licenca.setQuantidadeDispositivos(1);
-        licenca.setValidade("12 meses");
-        licenca.setFabricante("ESET Brasil");
-
-        ;
-
         String dir = "C:/Pos2022/appordem/src/main/resources/";
         String arq = "ordens.txt";
 
         try {
             FileReader arquivo = new FileReader(dir + arq);
             BufferedReader leitura = new BufferedReader(arquivo);
-
             try {
-
+                List<Ordem> ordens = new ArrayList<>();
+                Set<Produto> produtos = null;
                 String linha = leitura.readLine();
 
                 while (linha != null) {
-
+                    String[] campos = linha.split(";");
                     try {
-                        String[] campos = linha.split(";");
-
-                        Cliente cliente = new Cliente(campos[1], campos[2], campos[3], campos[4]);
-                        cliente.setId(Long.valueOf(campos[0]));
-
-                        Set<Produto> produtos = new HashSet<>();
-                        produtos.add(componente);
-                        produtos.add(licenca);
-                        produtos.add(servico);
-
-                        Ordem ordem = new Ordem(cliente, produtos);
-
-                        ordem.setSituacao(Situacao.valueOf(campos[5]));
-                        ordem.setTipoAtendimento(TipoAtendimento.valueOf(campos[6]));
-                        ordem.setEquipamento(campos[7]);
-                        ordem.setProblema(campos[8]);
-                        ordem.setSolucao(campos[9]);
-                        ordem.setObservacao(campos[10]);
-
-                        ordemService.incluir(ordem);
-
+                        switch (campos[0].toUpperCase()) {
+                            case "O":
+                                produtos = new HashSet<>();
+                                Ordem ordem = new Ordem(clienteService.obterPorId(Long.parseLong(campos[1])), produtos);
+                                ordem.setSituacao(Situacao.valueOf(campos[2]));
+                                ordem.setTipoAtendimento(TipoAtendimento.valueOf(campos[3]));
+                                ordem.setEquipamento(campos[4]);
+                                ordem.setProblema(campos[5]);
+                                ordem.setSolucao(campos[6]);
+                                ordem.setObservacao(campos[7]);
+                                ordens.add(ordem);
+                                break;
+                            case "C":
+                                produtos.add(componenteService.obterPorId(Long.parseLong(campos[1])));
+                                break;
+                            case "L":
+                                produtos.add(licencaService.obterPorId(Long.parseLong(campos[1])));
+                                break;
+                            case "S":
+                                produtos.add(servicoService.obterPorId(Long.parseLong(campos[1])));
+                                break;
+                            default:
+                                break;
+                        }
                     } catch (CampoObrigatorioException | CpfCnpjInvalidoException | ClienteNuloException | OrdemSemProdutoException e) {
                         System.out.println("[ERRO] - ORDEM: " + e.getMessage());
                     }
-
                     linha = leitura.readLine();
                 }
-
+                for (Ordem o : ordens) {
+                    System.out.println(">>> " + o.getId());
+                    System.out.println(">>> " + o.getCliente());
+                    System.out.println(">>> " + o.getProdutos().size());
+                    ordemService.incluir(o);
+                }
             } catch (FileNotFoundException e) {
                 System.out.println("[ERRO] O arquivo não foi encontrado!");
             } catch (Exception e) {
