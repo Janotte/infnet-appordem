@@ -3,13 +3,12 @@ package br.edu.infnet.appordem.model.domain;
 import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
-
+@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Table(name = "PRODUTOS")
 public abstract class Produto implements IPrinter {
 
     @Id
@@ -17,7 +16,7 @@ public abstract class Produto implements IPrinter {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", length = 60, nullable = false)
+    @Column(name = "nome", nullable = false, length = 60)
     private String nome;
 
     @Column(name = "custo_compra", nullable = false)
@@ -26,16 +25,9 @@ public abstract class Produto implements IPrinter {
     @Column(name = "preco_venda", nullable = false)
     private Double precoVenda;
 
-    public abstract double calcularPrecoVenda() throws ValorVendaInvalidoException;
-
-    public void imprimir() {
-        System.out.println(this);
-    }
-
-    @Override
-    public String toString() {
-        return id + ";" + nome + ";" + custoCompra;
-    }
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -69,9 +61,29 @@ public abstract class Produto implements IPrinter {
         this.precoVenda = precoVenda;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public abstract double calcularPrecoVenda() throws ValorVendaInvalidoException;
+
+    public void imprimir() {
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return id + "; " + nome + "; " + custoCompra + "; " + precoVenda;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
         return Objects.equals(id, produto.id);
     }

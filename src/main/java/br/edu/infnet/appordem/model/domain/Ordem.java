@@ -1,16 +1,16 @@
 package br.edu.infnet.appordem.model.domain;
 
 import br.edu.infnet.appordem.model.exceptions.ClienteNuloException;
-import br.edu.infnet.appordem.model.exceptions.OrdemSemProdutoException;
 import br.edu.infnet.appordem.interfaces.IPrinter;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
+@Entity
+@Table(name = "ORDENS")
 public class Ordem implements IPrinter {
 
     @Id
@@ -18,16 +18,18 @@ public class Ordem implements IPrinter {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "data_abertura")
-    private Date dataAbertura;
+    @CreationTimestamp
+    @Column(name = "data", nullable = false)
+    private Date data;
 
     @Column(name = "situacao")
     private Situacao situacao;
 
-    @Column(name = "tipo_atendimento", nullable = false)
+    @Column(name = "tipo_atendimento")
     private TipoAtendimento tipoAtendimento;
 
-    @Column(name = "cliente_id", nullable = false)
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     @Column(name = "equipamento", nullable = false)
@@ -39,23 +41,23 @@ public class Ordem implements IPrinter {
     @Column(name = "solucao")
     private String solucao;
 
-    private Set<Produto> produtos;
-
     @Column(name = "observacao")
     private String observacao;
 
-    public Ordem(Cliente cliente, Set<Produto> produtos) throws ClienteNuloException, OrdemSemProdutoException {
+    @ManyToMany(cascade = CascadeType.DETACH)
+    private Set<Produto> produtos;
 
-        if (cliente == null) throw new ClienteNuloException("Impossível criar uma Ordem sem um cliente!");
-
-      //  if (produtos.size() < 1) throw new OrdemSemProdutoException("Impossível criar uma Ordem sem Produtos!");
-
-        this.dataAbertura = new Date(System.currentTimeMillis());
-        this.cliente = cliente;
-        this.produtos = produtos;
-    }
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     public Ordem() {
+    }
+
+    public Ordem(Cliente cliente, Set<Produto> produtos) {
+        if (cliente == null) throw new ClienteNuloException("Impossível criar uma Ordem sem um cliente!");
+        this.cliente = cliente;
+        this.produtos = produtos;
     }
 
     public Long getId() {
@@ -66,12 +68,12 @@ public class Ordem implements IPrinter {
         this.id = id;
     }
 
-    public Date getDataAbertura() {
-        return dataAbertura;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataAbertura(Date dataAbertura) {
-        this.dataAbertura = dataAbertura;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public Situacao getSituacao() {
@@ -122,14 +124,6 @@ public class Ordem implements IPrinter {
         this.solucao = solucao;
     }
 
-    public Set<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(Set<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
     public String getObservacao() {
         return observacao;
     }
@@ -138,13 +132,43 @@ public class Ordem implements IPrinter {
         this.observacao = observacao;
     }
 
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
     @Override
     public void imprimir() {
         System.out.println(this);
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ordem ordem = (Ordem) o;
+        return Objects.equals(id, ordem.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
     public String toString() {
-        return id + ";" + dataAbertura + ";" + situacao.getDescricao() + ";" + tipoAtendimento.getDescricao() + ";" + equipamento + ";" + problema + ";" + solucao + ";" + observacao + ";" + cliente;
+        return id + "; " + data + "; " + cliente;
     }
 }

@@ -1,0 +1,3 @@
+O;1;CONCLUIDA;INTERNO;Notebook Samsung Book i7;Adicionar SSD NVME de 480Gb e reinstalar;Backup, instalação do SSD e reinstalação do Windows;Com carregador e mochila;
+O;2;ANALISE;EXTERNO;Servidor Dell Power Edge 9000;Não carrega o Windows;null;Urgente, empresa sem acesso ao domínio local;
+O;3;ABERTA;REMOTO;CPU Dell Vostro;Renovação de antivirus e pacote Office;null;Tem urgência;

@@ -1,0 +1,107 @@
+body {
+    background-color: #f8f8f8;
+    padding: 0 0 15px 0;
+}
+
+body main {
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: .5px 10px 15px rgba(0, 0, 0, .2);
+    margin: 65px 0px 65px 0px;
+    padding: 25px;
+}
+
+body .btn {
+    margin: 5px;
+}
+
+body #alert {
+    display: none;
+}
+
+nav #username {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+#top h2 {
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+#top button[type="submit"],
+#top a {
+    background-color: #6C62FF;
+    border-color: #6C62FF;
+}
+
+#top button[type="submit"]:hover,
+#top a:hover {
+    background-color: #8C82FF;
+    border-color: #8C82FF;
+}
+
+.input-group-append {
+    cursor: pointer;
+}
+
+#form-container h2 {
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+#form-container a {
+    color: #333;
+    transition: .5s;
+}
+
+#form-container a:hover {
+    color: #6C62FF;
+}
+
+#form-container .form-control {
+    border: none;
+    border-bottom: 1px solid #CCC;
+    border-radius: 0;
+}
+
+#form-container .form-control:focus {
+    box-shadow: none;
+}
+
+#form-container .form-floating label {
+    color: #333;
+}
+
+#form-container .form-floating>.form-control:focus~label {
+    color: #222;
+}
+
+#form-container input[type="submit"],
+#form-container button[type="submit"],
+#form-container input[type="checkbox"]:checked {
+    background-color: #6C62FF;
+    border-color: #6C62FF;
+}
+#form-container button[type="submit"]:hover,
+#form-container input[type="submit"]:hover {
+    background-color: #8C82FF;
+    border-color: #8C82FF;
+}
+
+/* IMAGE */
+.row.align-items-center {
+    align-content: center;
+    padding: 50px 0;
+    height: 100%;
+}
+
+#link-container {
+    font-size: 1.2em;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#table-itens tbody td {
+    vertical-align: middle;
+}

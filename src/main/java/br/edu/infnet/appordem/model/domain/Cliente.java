@@ -1,12 +1,15 @@
 package br.edu.infnet.appordem.model.domain;
 
-import br.edu.infnet.appordem.interfaces.IPrinter;
 import br.edu.infnet.appordem.model.exceptions.CampoObrigatorioException;
+import br.edu.infnet.appordem.model.exceptions.CelularInvalidoException;
 import br.edu.infnet.appordem.model.exceptions.CpfCnpjInvalidoException;
+import br.edu.infnet.appordem.interfaces.IPrinter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
+@Table(name = "CLIENTES")
 public class Cliente implements IPrinter {
 
     @Id
@@ -14,10 +17,10 @@ public class Cliente implements IPrinter {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome", length = 60, nullable = false)
+    @Column(name = "nome", nullable = false, length = 60)
     private String nome;
 
-    @Column(name = "cpf_cnpj", length = 20, unique = true)
+    @Column(name = "cpf_cnpj", length = 20)
     private String cpfCnpj;
 
     @Column(name = "celular", length = 15)
@@ -26,16 +29,13 @@ public class Cliente implements IPrinter {
     @Column(name = "email", length = 100)
     private String email;
 
-    public Cliente(String nome, String cpfCnpj, String celular, String email) throws CampoObrigatorioException, CpfCnpjInvalidoException {
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
-        if (nome == null) throw new CampoObrigatorioException("O nome do cliente é necessário.");
-
-        if (nome.isBlank()) throw new CampoObrigatorioException("O nome do cliente é necessário.");
-
-        if (cpfCnpj == null) throw new CpfCnpjInvalidoException("Não é possível aceitar CPF nulo para cliente");
-
-        if (cpfCnpj.isBlank()) throw new CpfCnpjInvalidoException("O CPF ou CNPJ do cliente é necessário.");
-
+    public Cliente(String nome, String cpfCnpj, String celular, String email) throws CampoObrigatorioException, CpfCnpjInvalidoException, CelularInvalidoException {
+        if (nome == null || nome.isBlank()) throw new CampoObrigatorioException("O nome do cliente é necessário.");
+        if (cpfCnpj == null || cpfCnpj.isBlank()) throw new CpfCnpjInvalidoException("Não é possível aceitar CPF nulo para cliente");
         this.nome = nome;
         this.cpfCnpj = cpfCnpj;
         this.celular = celular;
@@ -93,13 +93,34 @@ public class Cliente implements IPrinter {
         this.email = email;
     }
 
-    @Override
-    public void imprimir() {
-        System.out.println(this);
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
     public String toString() {
-        return id + ";" + nome + ";" + cpfCnpj + ";" + celular + ";" + email;
+        return id + "; " + nome + "; " + cpfCnpj + "; " + celular + "; " + email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(id, cliente.id) && Objects.equals(nome, cliente.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome);
+    }
+
+    @Override
+    public void imprimir() {
+        System.out.println(this);
     }
 }

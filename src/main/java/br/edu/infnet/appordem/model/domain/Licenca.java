@@ -5,7 +5,11 @@ import br.edu.infnet.appordem.model.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "LICENCAS")
 public class Licenca extends Produto {
 
     @Column(name = "quantidade_dispositivos", nullable = false)
@@ -69,7 +73,7 @@ public class Licenca extends Produto {
 
     @Override
     public String toString() {
-        return super.toString() + ";" + quantidadeDispositivos + ";" + validade + ";" + fabricante;
+        return super.toString() + "; " + quantidadeDispositivos + "; " + validade + "; " + fabricante;
     }
 
 }

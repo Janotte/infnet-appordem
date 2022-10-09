@@ -1,8 +1,8 @@
 package br.edu.infnet.appordem.controllers;
 
 import br.edu.infnet.appordem.model.domain.Usuario;
-import br.edu.infnet.appordem.model.services.AppService;
-import br.edu.infnet.appordem.model.services.UsuarioService;
+import br.edu.infnet.appordem.model.service.AppService;
+import br.edu.infnet.appordem.model.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 
-@SessionAttributes("user")
+@SessionAttributes("auth")
 @Controller
 public class AppController {
 
@@ -32,14 +32,15 @@ public class AppController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login/loginPage";
+        return "/login/login";
     }
 
     @PostMapping("/login")
     public String login(Model model, @RequestParam String email, @RequestParam String senha) {
+        model.addAttribute("pageTitle", "Login");
         Usuario usuario = usuarioService.validar(email, senha);
         if (usuario != null) {
-            model.addAttribute("user", usuario);
+            model.addAttribute("auth", usuario);
             return "redirect:/";
         }
 
@@ -49,8 +50,7 @@ public class AppController {
     @GetMapping("/logout")
     public String loginPage(HttpSession session, SessionStatus status) {
         status.setComplete();
-        session.removeAttribute("user");
-
+        session.removeAttribute("auth");
         return "redirect:/";
     }
 }

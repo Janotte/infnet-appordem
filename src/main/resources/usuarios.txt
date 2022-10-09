@@ -1,6 +1,0 @@
-admin@admin.com;Administrador;123;
-usuario1@user.com;Usuário1;123;
-usuario2@user.com;Usuário2;123;
-usuario3@user.com;;123;
-;Usuário4;123;
-usuario5@user.com;Usuário5; ;

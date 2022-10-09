@@ -1,8 +1,0 @@
-MANUTENCAO_SISTEMAS;1.07 – Suporte técnico em informática;Suporte técnico em sistemas;80.00;3 meses;
-MANUTENCAO_HARDWARE;14.02 – Assistência técnica;Suporte técnico em Servidores;70.00;90 dias;
-MANUTENCAO_INFRAESTRUTURA;14.02 – Assistência técnica;Montagem e manutenção de cabeamento de rede;80.00;1 ano;
-MANUTENCAO_INFRAESTRUTURA;14.02 – Assistência técnica;Com valor abaixo do permitido;30.00;1 ano;
-MANUTENCAO_INFRAESTRUTURA;14.02 – Assistência técnica;Com custo negativo;-30.00;1 ano;
-MANUTENCAO_INFRAESTRUTURA;14.02 – Assistência técnica;Montagem e manutenção de cabeamento de rede;80.00;50 dias;
-MANUTENCAO_INFRAESTRUTURA;14.02 – Assistência técnica;Montagem e manutenção de cabeamento de rede;80.00;1 mes;
-MANUTENCAO_INFRAESTRUTURA;14.02 – Assistência técnica;Montagem e manutenção de cabeamento de rede;80.00;0.5 ano;

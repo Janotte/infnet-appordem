@@ -1,0 +1,60 @@
+P;APP Ordem;Gestão de Ordem de Serviço;Sandro André Janotte;Java Web e Injeção de Dependência
+C;Ordem
+A;id;Long;Código da Ordem de Serviço
+A;data;Date;Data de abertura da Ordem de Serviço.
+A;situacao;Situacao;Situação em que se encontra a Ordem de Serviço.
+A;tipoAtendimento;TipoAtendimento;Tipo Atendimento da Ordem de Serviço (Remoto, Interno ou Externo)
+A;cliente;Cliente;Cliente para qual a Ordem de Serviço foi realizada.
+A;equipamento;String;Equipamento que está apresentando problema.
+A;problema;String;Problema apresentado pelo equipamento.
+A;solucao;String;Solução para o problema apresentado.
+A;observacao;String;Campo para observações necessárias.
+A;produtos;Produto;Lista de Produto utilizados na manutenção do equipamento.
+A;usuario;Usuario;Proprietário da ordem de serviço.
+C;Cliente
+A;id;Long;Código do cliente.
+A;nome;String;Nome do cliente.
+A;cpfCnpj;String;CPF ou CNPJ do cliente.
+A;celular;String;Celular do cliente.
+A;email;String;Email do cliente.
+A;usuario;Usuario;Proprietário do cliente.
+C;Produto
+A;id;Long;Código do produto.
+A;nome;String;Nome do produto.
+A;custoCompra;Double;Custo de compra do produto.
+A;precoVenda;Double;Preço de venda do produto.
+C;Componente
+A;id;Long;Código do componente.
+A;nome;String;Nome do componente.
+A;custoCompra;Double;Custo de compra do componente.
+A;precoVenda;Double;Preço de venda do componente.
+A;ncm;String;NCM do produto.
+A;valorCompra;Double;Valor de compra do componente.
+A;valorFrete;Double;Valor do frete do componente.
+A;usuario;Usuario;Proprietário do componente.
+C;Licenca
+A;id;Long;Código do licença.
+A;nome;String;Nome da licença.
+A;custoCompra;Double;Custo de compra da licença.
+A;precoVenda;Double;Preço de venda da licença.
+A;quantidadeDispositivos;Integer;Quantidade de dispositivos suportados.
+A;validade;String;Validade da licença.
+A;fabricante;String;Nome do fabricante da licença.
+A;usuario;Usuario;Proprietário da licença.
+C;Servico
+A;id;Long;Código do serviço.
+A;nome;String;Nome do serviço.
+A;custoCompra;Double;Custo de compra do serviço.
+A;precoVenda;Double;Preço de venda do serviço.
+A;garantia;String;Tempo de garantia do serviço.
+A;tipoServico;TipoServico;Tipo do serviço.
+A;classificacaoFiscal;String;Classificação Fiscal do serviço.
+A;usuario;Usuario;Proprietário do serviço.
+C;Usuario
+A;id;Long;Código do usuário.
+A;nome;String;O nome do usuário.
+A;email;String;O e-mail do usuário.
+A;senha;String;A senha do usuário.
+C;Mensagem
+A;texto;String;Texto da mensagem.
+A;texto;String;Tipo da mensagem, sucesso ou erro.

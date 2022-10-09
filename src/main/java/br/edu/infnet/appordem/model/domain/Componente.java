@@ -5,7 +5,11 @@ import br.edu.infnet.appordem.model.exceptions.ValorNegativoException;
 import br.edu.infnet.appordem.model.exceptions.ValorVendaInvalidoException;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "COMPONENTES")
 public class Componente extends Produto {
 
     @Column(name = "ncm", length = 60, nullable = false)
@@ -76,6 +80,6 @@ public class Componente extends Produto {
 
     @Override
     public String toString() {
-        return super.toString() + ";" + ncm + ";" + valorCompra + ";" + valorFrete;
+        return super.toString() + "; " + ncm + "; " + valorCompra + "; " + valorFrete;
     }
 }
